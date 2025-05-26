@@ -1,0 +1,30 @@
+@mixin fadeInUp($distance: 50px) {
+    &.show {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    &.hide {
+        transform: translateY($distance);
+        opacity: 0;
+    }
+}
+
+@mixin slide-link-button($bg-color: black, $text-color: white, $border-color: white, $hover-lighten: 20%) {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    color: $text-color;
+    background-color: $bg-color;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid $border-color;
+    text-decoration: none;
+    transition: all 0.3s;
+  
+    &:hover {
+      background-color: lighten($bg-color, $hover-lighten);
+    }
+  }
+  

@@ -1,0 +1,120 @@
+.projects {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0;
+    align-items: center;
+    background-color: $background-beige;
+    user-select: none;
+    overflow: hidden;
+    min-height: 100vh;
+
+    .header {
+        color: $skill-card-header;
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+    }
+
+    .swiper-container {
+        width: 100%;
+        aspect-ratio: 1 / 0.3;
+        overflow: none;
+
+        .swiper-slide {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: inherit;
+            height: 90vh;
+            background-color: white;
+            border: 5px solid black;
+            // border-radius: 20px;
+            border-radius: 5px;
+            overflow: hidden;
+
+            img {
+                display: block;
+                width: 100%;
+                // height: 90vh;
+                height: auto;
+                aspect-ratio: $project-aspect-ratio;
+                object-fit: contain;
+                background-color: black;
+            }            
+
+            .slide-info {
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                // min-height: 45%;
+                height: 100%;
+                width: 50%;
+                padding: 30px;
+                background-color: rgba(0, 0, 0, 0.8);
+                // border-radius: 30px 0 0 0;
+                // border-top: 2px solid white;
+                // border-left: 2px solid white;
+                box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.5);
+                animation: slideIn 2.5s ease-in-out forwards;
+
+                .slide-title,
+                .sub-title,
+                .project-description,
+                .tools {
+                    color: white;
+                }
+
+                hr,
+                .project-description,
+                .tools,
+                .source-link,
+                .live-link {
+                    margin-bottom: 15px;
+                }
+
+                .sub-title {
+                    margin-bottom: 10px;
+                }
+
+                .slide-title {
+                    font-size: 2rem;
+                    font-weight: 700;
+                    margin-bottom: 1rem;
+                }
+
+                .source-links,
+                .live-links {
+                    display: flex;
+                    gap: 10px;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                }
+
+                .source-link {
+                    @include slide-link-button(#1a1a1a, #ffffff);
+                }
+
+                .live-link {
+                    @include slide-link-button(white, black, rgb(96, 215, 255));
+                }
+
+                hr {
+                    width: 100%;
+                }
+            }
+        }
+
+        .swiper-slide-active {
+            .slide-info {
+                display: flex;
+            }
+        }
+    }
+}

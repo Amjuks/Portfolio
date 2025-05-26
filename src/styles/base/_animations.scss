@@ -1,0 +1,80 @@
+@keyframes slideIn {
+    0% {
+        transform: translate(100%, 0%);
+        opacity: 0;
+    } 20% {
+        filter: brightness(1);
+    } 20%, 80% {
+        transform: translate(0%, 0%);
+        opacity: 1;
+    } 100% {
+        transform: translate(0%, 0%);
+        opacity: 1;
+    }
+    // } 100% {
+    //     transform: translate(0%, 100%);
+    //     opacity: 0;
+    // }
+}
+
+@keyframes type {
+    from, to {
+        width: 0%;
+    } 25% {
+        width: 100%;
+    } 75% {
+        width: 100%;
+    }
+}
+
+@keyframes slideDot {
+    from {
+        top: 0%;
+    } to {
+        top: 100%;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateX(-50%) scale(1);
+        box-shadow: 0 0 8px $exp-card-body, 0 0 16px rgba(139, 69, 19, 0.6), 0 0 24px rgba(139, 69, 19, 0.4);
+      }
+      50% {
+        transform: translateX(-50%) scale(1.1);
+        box-shadow: 0 0 12px $exp-card-body, 0 0 24px rgba(139, 69, 19, 0.8), 0 0 36px rgba(139, 69, 19, 0.6);
+      }
+      100% {
+        transform: translateX(-50%) scale(1);
+        box-shadow: 0 0 8px $exp-card-body, 0 0 16px rgba(139, 69, 19, 0.6), 0 0 24px rgba(139, 69, 19, 0.4);
+      }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    } to {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    } to {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes sendingWave {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+}

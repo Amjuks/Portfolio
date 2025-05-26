@@ -1,0 +1,123 @@
+.experience {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    // background-color: $background-ivory;
+    background-color: $background-color;
+    overflow: clip;
+
+    .header {
+        color: $skill-card-header;
+        font-size: 4rem;
+        font-weight: 700;
+        margin-block: 3rem;
+    }
+
+    .timeline {
+        position: relative;
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 40px 0;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, $exp-card-footer-2, $exp-card-footer);
+            box-shadow: 0 0 10px $exp-card-body;
+            transform: translateX(-50%);
+            border-radius: 50rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 2px solid $exp-card-body;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 8px $exp-card-body;
+            opacity: 0;
+            animation: pulse 1s infinite;
+            transition: top 0.2s ease-out, opacity 1s;
+
+            &.visible {
+                opacity: 1;
+            }
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: $exp-card-bg;
+            border-radius: 5px;
+            border: 1px solid $exp-card-body;
+            margin-bottom: 50px;
+            clip: rect(auto, auto, auto, auto); 
+
+            &:nth-child(odd) {
+                left: -50%;
+                text-align: left;
+                margin-right: $timeline-margin;
+                animation: slideRight 1s ease-out;
+                animation-timeline: view();
+                animation-range: 0vh 50vh;
+            }
+
+            &:nth-child(even) {
+                left: 50%;
+                margin-left: $timeline-margin;
+                text-align: left;
+                animation: slideLeft 1s ease-out;
+                animation-timeline: view();
+                animation-range: 0vh 100vh;
+            }
+
+            .timeline-item-content {
+                width: 300px;
+            }
+
+            
+            .exp-time {
+                margin-bottom: 5px;
+                font-size: 1rem;
+                color: $exp-card-footer-2;
+            }
+
+            .exp-company {
+                font-size: 1.5rem;
+                color: $exp-card-title;
+                margin-bottom: 10px;
+            }
+
+            .exp-description {
+                color: $exp-card-body;
+                margin-bottom: 15px;
+                overflow: hidden;
+            }
+
+            .exp-skills {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 3px;
+                margin-bottom: 5px;
+
+                .skill {
+                    background-color: $exp-card-footer-2;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    color: $exp-card-bg;
+                    margin: 0 0 5px 0;
+                }
+            }
+        }
+    }
+}
