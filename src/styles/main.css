@@ -567,6 +567,7 @@ body {
   user-select: none;
   overflow: hidden;
   min-height: 100vh;
+  padding-block: 2rem;
 }
 .certificates .header {
   color: #34495E;
@@ -576,7 +577,6 @@ body {
 }
 .certificates .swiper-container {
   width: 100%;
-  aspect-ratio: 1.3/1;
   overflow: none;
 }
 .certificates .swiper-container .swiper-slide {
@@ -585,8 +585,8 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  width: inherit;
-  height: 90vh;
+  width: 100%;
+  height: 100%;
   background-color: white;
   border: 5px solid black;
   border-radius: 5px;
@@ -594,11 +594,9 @@ body {
 }
 .certificates .swiper-container .swiper-slide img {
   display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1.333;
+  height: 80vh;
   object-fit: contain;
-  background-color: black;
+  background-color: white;
 }
 .certificates .swiper-container .swiper-slide .slide-info {
   display: none;
@@ -608,8 +606,8 @@ body {
   position: absolute;
   bottom: 0;
   right: 0;
-  height: 40%;
-  width: 40%;
+  height: 20%;
+  width: auto;
   padding: 30px;
   background-color: rgba(0, 0, 0, 0.8);
   box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.5);

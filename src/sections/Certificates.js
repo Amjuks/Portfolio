@@ -20,7 +20,7 @@ function Certificates() {
                     centeredSlides={true}
                     slidesPerView={1.5}
                     autoplay={{
-                        delay: 2500,
+                        delay: 25000,
                         disableOnInteraction: false,
                     }}
                     coverflowEffect={{
