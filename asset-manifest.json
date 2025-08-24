@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Portfolio/static/css/main.138cc9ba.css",
-    "main.js": "/Portfolio/static/js/main.a2e9b7db.js",
+    "main.css": "/Portfolio/static/css/main.42d79c4b.css",
+    "main.js": "/Portfolio/static/js/main.399c4c14.js",
     "static/js/453.1407b060.chunk.js": "/Portfolio/static/js/453.1407b060.chunk.js",
     "static/media/scenery_generator.png": "/Portfolio/static/media/scenery_generator.f2e124e3afccb2c7c5e3.png",
     "static/media/cs50ai.png": "/Portfolio/static/media/cs50ai.7ce83b2d41ae7427661a.png",
     "static/media/cs50web.png": "/Portfolio/static/media/cs50web.e2dc1dec0d6c02480340.png",
     "static/media/cs50x.png": "/Portfolio/static/media/cs50x.2d18ae3f6e5154ecf3f7.png",
-    "static/media/Aman.png": "/Portfolio/static/media/Aman.f5f45c7be4b75e082e34.png",
+    "static/media/Aman.jpg": "/Portfolio/static/media/Aman.42ecf6ca0b7f0a1a36b3.jpg",
     "static/media/particle_life_simulation.png": "/Portfolio/static/media/particle_life_simulation.e35825680f0a023031c9.png",
     "static/media/number_generator.png": "/Portfolio/static/media/number_generator.4242e8b87075fe02c95e.png",
     "static/media/stackoverflow.png": "/Portfolio/static/media/stackoverflow.cafe714ce7646005c580.png",
@@ -17,12 +17,12 @@
     "static/media/TopWave.svg": "/Portfolio/static/media/TopWave.5f8561a1558be9375d63a38e54193e1d.svg",
     "static/media/BottomWave.svg": "/Portfolio/static/media/BottomWave.3c28f7a29fc65d45b2829ddb64fe72ef.svg",
     "index.html": "/Portfolio/index.html",
-    "main.138cc9ba.css.map": "/Portfolio/static/css/main.138cc9ba.css.map",
-    "main.a2e9b7db.js.map": "/Portfolio/static/js/main.a2e9b7db.js.map",
+    "main.42d79c4b.css.map": "/Portfolio/static/css/main.42d79c4b.css.map",
+    "main.399c4c14.js.map": "/Portfolio/static/js/main.399c4c14.js.map",
     "453.1407b060.chunk.js.map": "/Portfolio/static/js/453.1407b060.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.138cc9ba.css",
-    "static/js/main.a2e9b7db.js"
+    "static/css/main.42d79c4b.css",
+    "static/js/main.399c4c14.js"
   ]
 }
