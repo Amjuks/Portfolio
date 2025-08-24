@@ -18,7 +18,10 @@ function Certificates() {
                     loop={true}
                     grabCursor={true}
                     centeredSlides={true}
-                    slidesPerView={1.5}
+                    breakpoints={{
+                        0: { slidesPerView: 1 },
+                        768: { slidesPerView: 1.5 }
+                    }}  
                     autoplay={{
                         delay: 25000,
                         disableOnInteraction: false,
