@@ -394,7 +394,7 @@ body {
   box-shadow: 0 0 8px #8B4513;
   opacity: 0;
   animation: pulse 1s infinite;
-  transition: top 0.2s ease-out, opacity 1s;
+  transition: top 1s ease-out, opacity 1s;
 }
 .experience .timeline .timeline-dot.visible {
   opacity: 1;
@@ -867,7 +867,7 @@ body {
 }
 @media (max-width: 600px) {
   .intro {
-    min-height: 70vh;
+    min-height: 100vh;
   }
   .intro .profile-info .profile-name .name, .intro .profile-info .profile-name .profile-sub .title {
     font-size: 1.5rem;

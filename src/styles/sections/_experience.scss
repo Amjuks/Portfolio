@@ -44,7 +44,7 @@
             box-shadow: 0 0 8px $exp-card-body;
             opacity: 0;
             animation: pulse 1s infinite;
-            transition: top 0.2s ease-out, opacity 1s;
+            transition: top 1s ease-out, opacity 1s;
 
             &.visible {
                 opacity: 1;

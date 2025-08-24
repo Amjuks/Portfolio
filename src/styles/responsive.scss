@@ -18,37 +18,11 @@ $breakpoint-mobile: 600px;
       width: 120px;
     }
   }
-
-  // .contact-section {
-  //   .header {
-  //     font-size: 2.5rem;
-  //   }
-  //   .contact-container {
-  //     grid-template-areas: 
-  //       "contact-form"
-  //       "contact-social";
-  //     grid-template-columns: 1fr;
-  //     gap: 1rem;
-  //     .contact-form, .contact-social {
-  //       width: 100%;
-  //       max-width: 100%;
-  //       padding: 1rem;
-  //     }
-  //     .contact-social {
-  //       flex-direction: row;
-  //       flex-wrap: wrap;
-  //       justify-content: center;
-  //       .social-link {
-  //         margin-bottom: 0.5rem;
-  //       }
-  //     }
-  //   }
-  // }
 }
 
 @media (max-width: $breakpoint-mobile) {
   .intro {
-    min-height: 70vh;
+    min-height: 100vh;
     .profile-info {
       .profile-name {
         .name, .profile-sub .title {
@@ -60,28 +34,4 @@ $breakpoint-mobile: 600px;
       width: 80px;
     }
   }
-
-  // .contact-section {
-  //   .header {
-  //     font-size: 1.5rem;
-  //   }
-  //   .contact-container {
-  //     .contact-form, .contact-social {
-  //       padding: 0.5rem;
-  //     }
-  //     .contact-social {
-  //       gap: 0.5rem;
-  //       .social-link {
-  //         .social-link-container {
-  //           width: 36px;
-  //           height: 36px;
-  //           margin-right: 10px;
-  //         }
-  //         p {
-  //           font-size: 1rem;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
 }

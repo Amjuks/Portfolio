@@ -8,10 +8,6 @@ const Contact = () => {
             <h1 className="header">Contact</h1>
             <div className="contact-container">
                 <form className="contact-form" action="mailto:aman.jukaku@gmail.com" encType="text/plain">
-                    {/* <label htmlFor="name">Name</label>
-                    <input type="text" id="name" name="name" required />
-                    <label htmlFor="email">Email</label>
-                    <input type="email" id="email" name="email" required /> */}
                     <input type="hidden" name="subject" value={"Contacting from Portfolio"}></input>
                     <label htmlFor="body">Message</label>
                     <textarea id="body" name="body" required></textarea>
