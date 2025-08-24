@@ -1,0 +1,125 @@
+// Add to the end of src/styles/main.scss or in each section's SCSS file
+
+// Responsive breakpoints
+$breakpoint-tablet: 900px;
+$breakpoint-mobile: 600px;
+
+@media (max-width: $breakpoint-tablet) {
+  .intro {
+    .profile-info {
+      flex-direction: column;
+      align-items: center;
+      .profile-name {
+        align-items: center;
+        .name, .profile-sub .title {
+          font-size: 2.5rem;
+          text-align: center;
+        }
+      }
+    }
+    .avatar-container {
+      width: 120px;
+    }
+  }
+
+  .contact-section {
+    .header {
+      font-size: 2.5rem;
+    }
+    .contact-container {
+      grid-template-areas: 
+        "contact-form"
+        "contact-social";
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      .contact-form, .contact-social {
+        width: 100%;
+        max-width: 100%;
+        padding: 1rem;
+      }
+      .contact-social {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        .social-link {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+
+  // .certificates {
+  //   .header {
+  //     font-size: 2.5rem;
+  //   }
+  //   .swiper-container {
+  //     .swiper-slide {
+  //       flex-direction: column;
+  //       img {
+  //         height: 40vw;
+  //       }
+  //       .slide-info {
+  //         width: 100%;
+  //         padding: 10px;
+  //       }
+  //     }
+  //   }
+  // }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .intro {
+    min-height: 70vh;
+    .profile-info {
+      .profile-name {
+        .name, .profile-sub .title {
+          font-size: 1.5rem;
+        }
+      }
+    }
+    .avatar-container {
+      width: 80px;
+    }
+  }
+
+  .contact-section {
+    .header {
+      font-size: 1.5rem;
+    }
+    .contact-container {
+      .contact-form, .contact-social {
+        padding: 0.5rem;
+      }
+      .contact-social {
+        gap: 0.5rem;
+        .social-link {
+          .social-link-container {
+            width: 36px;
+            height: 36px;
+            margin-right: 10px;
+          }
+          p {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  // .certificates {
+  //   .header {
+  //     font-size: 1.5rem;
+  //   }
+  //   .swiper-container {
+  //     .swiper-slide {
+  //       img {
+  //         height: 25vw;
+  //       }
+  //       .slide-info {
+  //         font-size: 0.9rem;
+  //         padding: 5px;
+  //       }
+  //     }
+  //   }
+  // }
+}

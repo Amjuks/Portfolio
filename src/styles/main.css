@@ -68,6 +68,16 @@
     transform: translateX(0%);
   }
 }
+@keyframes slideMobile {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
 @keyframes sendingWave {
   0% {
     left: -100%;
@@ -287,6 +297,49 @@ body {
   display: flex;
 }
 
+@media (max-width: 768px) {
+  .projects .swiper-container {
+    padding-inline: 20px;
+  }
+  .projects .swiper-container .swiper-slide {
+    flex-direction: column;
+    height: 100% !important;
+    border: 1px solid black;
+  }
+  .projects .swiper-container .swiper-slide img {
+    position: static;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  .projects .swiper-container .swiper-slide .slide-info {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: none;
+    animation: none;
+  }
+  .projects .swiper-container .swiper-slide .slide-info .slide-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .projects .swiper-container .swiper-slide .slide-info .project-description,
+  .projects .swiper-container .swiper-slide .slide-info .tools,
+  .projects .swiper-container .swiper-slide .slide-info .sub-title,
+  .projects .swiper-container .swiper-slide .slide-info .source-link,
+  .projects .swiper-container .swiper-slide .slide-info .live-link {
+    font-weight: 300;
+  }
+  .projects .swiper-container .swiper-slide .slide-info hr {
+    border-color: #ccc;
+  }
+}
 .experience {
   display: flex;
   flex-direction: column;
@@ -395,6 +448,36 @@ body {
   margin: 0 0 5px 0;
 }
 
+@media (max-width: 768px) {
+  .experience .timeline {
+    margin: 20px auto;
+    padding: 20px 0;
+  }
+  .experience .timeline:before {
+    left: 20px;
+    transform: none;
+  }
+  .experience .timeline .timeline-dot {
+    left: 20px;
+    transform: translateX(-50%);
+  }
+  .experience .timeline .timeline-item {
+    margin: 20px 0 20px 50px;
+    width: calc(100% - 70px);
+    text-align: left;
+  }
+  .experience .timeline .timeline-item:nth-child(even), .experience .timeline .timeline-item:nth-child(odd) {
+    left: 0;
+    text-align: left;
+    margin-right: 50px;
+    animation: slideMobile 1s ease-out;
+    animation-timeline: view();
+    animation-range: 0vh 70vh;
+  }
+  .experience .timeline .timeline-item .timeline-item-content {
+    width: 100%;
+  }
+}
 .contact-section {
   display: flex;
   flex-direction: column;
@@ -678,6 +761,72 @@ body {
 }
 .certificates .swiper-container .swiper-slide-active .slide-info {
   display: flex;
+}
+
+@media (max-width: 900px) {
+  .intro .profile-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  .intro .profile-info .profile-name {
+    align-items: center;
+  }
+  .intro .profile-info .profile-name .name, .intro .profile-info .profile-name .profile-sub .title {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  .intro .avatar-container {
+    width: 120px;
+  }
+  .contact-section .header {
+    font-size: 2.5rem;
+  }
+  .contact-section .contact-container {
+    grid-template-areas: "contact-form" "contact-social";
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .contact-section .contact-container .contact-form, .contact-section .contact-container .contact-social {
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+  }
+  .contact-section .contact-container .contact-social {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .contact-section .contact-container .contact-social .social-link {
+    margin-bottom: 0.5rem;
+  }
+}
+@media (max-width: 600px) {
+  .intro {
+    min-height: 70vh;
+  }
+  .intro .profile-info .profile-name .name, .intro .profile-info .profile-name .profile-sub .title {
+    font-size: 1.5rem;
+  }
+  .intro .avatar-container {
+    width: 80px;
+  }
+  .contact-section .header {
+    font-size: 1.5rem;
+  }
+  .contact-section .contact-container .contact-form, .contact-section .contact-container .contact-social {
+    padding: 0.5rem;
+  }
+  .contact-section .contact-container .contact-social {
+    gap: 0.5rem;
+  }
+  .contact-section .contact-container .contact-social .social-link .social-link-container {
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+  }
+  .contact-section .contact-container .contact-social .social-link p {
+    font-size: 1rem;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    // background-color: $background-ivory;
     background-color: $background-color;
     overflow: clip;
 
@@ -120,4 +119,43 @@
             }
         }
     }
+}
+
+@media (max-width: 768px) {
+  .experience {
+    .timeline {
+      margin: 20px auto;
+      padding: 20px 0;
+
+      &:before {
+        left: 20px;
+        transform: none;
+      }
+
+      .timeline-dot {
+        left: 20px;
+        transform: translateX(-50%);
+      }
+
+      .timeline-item {
+        margin: 20px 0 20px 50px;
+        width: calc(100% - 70px);
+        text-align: left;
+
+        &:nth-child(even),
+        &:nth-child(odd) {
+            left: 0;
+            text-align: left;
+            margin-right: $timeline-margin;
+            animation: slideMobile 1s ease-out;
+            animation-timeline: view();
+            animation-range: 0vh 70vh;
+        }
+
+        .timeline-item-content {
+          width: 100%;
+        }
+      }
+    }
+  }
 }
