@@ -3,7 +3,6 @@ import Projects from './sections/Projects';
 import Experience from './sections/Experience';
 import Contact from './sections/Contact';
 import Certificates from './sections/Certificates';
-import './App.css';
 
 function App() {
   return (

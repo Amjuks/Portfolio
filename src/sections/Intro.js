@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { name, titles } from '../data/titles';
-import profilePic from '../assets/profile/Aman.png';
+import profilePic from '../assets/profile/Aman.jpg';
 
 const Intro = () => {
     const [title, setTitle] = useState(titles[0]);

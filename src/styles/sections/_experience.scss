@@ -151,7 +151,7 @@
             margin-right: $timeline-margin;
             animation: slideMobile 1s ease-out;
             animation-timeline: view();
-            animation-range: 0vh 70vh;
+            animation-range: 0vh 100vh;
         }
 
         .timeline-item-content {

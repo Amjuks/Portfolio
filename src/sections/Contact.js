@@ -1,35 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import socials from "../data/socials";
 
 const Contact = () => {
-
-    useEffect(() => {
-        const socialLinks = document.querySelectorAll(".social-link, .contact-form");
-
-        const checkPosition = () => {
-            socialLinks.forEach((link) => {
-                const rect = link.getBoundingClientRect();
-                const viewportHeight = window.innerHeight;
-                const positionFromTop = (rect.top / viewportHeight) * 100;
-
-                if (positionFromTop <= 80) {
-                    link.classList.add("show");
-                    link.classList.remove("hide");
-                }
-                if (positionFromTop >= 85) {
-                    link.classList.add("hide");
-                    link.classList.remove("show");
-                }
-            });
-        };
-
-        window.addEventListener("scroll", checkPosition);
-        checkPosition();
-
-        return () => {
-            window.removeEventListener("scroll", checkPosition);
-        };
-    }, []);
 
     return (
         <section className="contact-section">

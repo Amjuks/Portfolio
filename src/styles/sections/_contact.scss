@@ -126,15 +126,17 @@
             gap: 1rem;
 
             .social-link {
-                @include fadeInUp(0px);
-
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 justify-content: flex-start;
-                opacity: 0;
+                opacity: 1;
                 transition: transform 0.5s ease-out, opacity 0.5s ease-out;
                 
+                animation: slideUpMobile 1s ease-out;
+                animation-timeline: view();
+                animation-range: 0vh 15vh;
+
                 .social-link-container {
                     height: 50px;
                     width: 50px;
@@ -191,15 +193,16 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 1.5rem;
-        margin-inline: 40px;
-        aspect-ratio: auto;   // let it expand
-        height: auto;         // take as much height as links need
-        align-items: stretch; // not locked in the center
+        margin-inline-start: 70px;
 
         .social-link {
           justify-content: center; // center text + icon
           flex-direction: row;
           gap: 1rem;
+
+          animation: slideUpMobile 2s ease-out;
+          animation-timeline: view();
+          animation-range: 0vh 10vh;
 
           .social-link-container {
             margin-right: 0; // no big offset on mobile
