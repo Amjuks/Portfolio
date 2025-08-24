@@ -78,6 +78,16 @@
     transform: translateX(0%);
   }
 }
+@keyframes slideUpMobile {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
 @keyframes sendingWave {
   0% {
     left: -100%;
@@ -449,6 +459,9 @@ body {
 }
 
 @media (max-width: 768px) {
+  .experience {
+    min-height: auto;
+  }
   .experience .timeline {
     margin: 20px auto;
     padding: 20px 0;
@@ -612,7 +625,7 @@ body {
   opacity: 1;
 }
 .contact-section .contact-container .contact-social .social-link.hide {
-  transform: translateY(50px);
+  transform: translateY(0px);
   opacity: 0;
 }
 .contact-section .contact-container .contact-social .social-link .social-link-container {
@@ -640,6 +653,47 @@ body {
   margin: 0;
 }
 
+@media (max-width: 768px) {
+  .contact-section {
+    min-height: auto;
+    height: auto;
+  }
+  .contact-section .contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .contact-section .contact-container .contact-form {
+    order: 1;
+    width: 100%;
+    max-width: 500px;
+  }
+  .contact-section .contact-container .contact-social {
+    order: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-inline: 40px;
+    aspect-ratio: auto;
+    height: auto;
+    align-items: stretch;
+  }
+  .contact-section .contact-container .contact-social .social-link {
+    justify-content: center;
+    flex-direction: row;
+    gap: 1rem;
+  }
+  .contact-section .contact-container .contact-social .social-link .social-link-container {
+    margin-right: 0;
+  }
+  .contact-section .contact-container .contact-social .social-link p {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}
 .certificates {
   display: flex;
   flex-direction: column;
@@ -815,27 +869,6 @@ body {
   .intro .avatar-container {
     width: 120px;
   }
-  .contact-section .header {
-    font-size: 2.5rem;
-  }
-  .contact-section .contact-container {
-    grid-template-areas: "contact-form" "contact-social";
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .contact-section .contact-container .contact-form, .contact-section .contact-container .contact-social {
-    width: 100%;
-    max-width: 100%;
-    padding: 1rem;
-  }
-  .contact-section .contact-container .contact-social {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .contact-section .contact-container .contact-social .social-link {
-    margin-bottom: 0.5rem;
-  }
 }
 @media (max-width: 600px) {
   .intro {
@@ -846,23 +879,6 @@ body {
   }
   .intro .avatar-container {
     width: 80px;
-  }
-  .contact-section .header {
-    font-size: 1.5rem;
-  }
-  .contact-section .contact-container .contact-form, .contact-section .contact-container .contact-social {
-    padding: 0.5rem;
-  }
-  .contact-section .contact-container .contact-social {
-    gap: 0.5rem;
-  }
-  .contact-section .contact-container .contact-social .social-link .social-link-container {
-    width: 36px;
-    height: 36px;
-    margin-right: 10px;
-  }
-  .contact-section .contact-container .contact-social .social-link p {
-    font-size: 1rem;
   }
 }
 

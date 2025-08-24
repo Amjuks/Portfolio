@@ -123,6 +123,8 @@
 
 @media (max-width: 768px) {
   .experience {
+    min-height: auto;
+    
     .timeline {
       margin: 20px auto;
       padding: 20px 0;

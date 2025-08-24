@@ -1,6 +1,3 @@
-// Add to the end of src/styles/main.scss or in each section's SCSS file
-
-// Responsive breakpoints
 $breakpoint-tablet: 900px;
 $breakpoint-mobile: 600px;
 
@@ -22,45 +19,27 @@ $breakpoint-mobile: 600px;
     }
   }
 
-  .contact-section {
-    .header {
-      font-size: 2.5rem;
-    }
-    .contact-container {
-      grid-template-areas: 
-        "contact-form"
-        "contact-social";
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      .contact-form, .contact-social {
-        width: 100%;
-        max-width: 100%;
-        padding: 1rem;
-      }
-      .contact-social {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        .social-link {
-          margin-bottom: 0.5rem;
-        }
-      }
-    }
-  }
-
-  // .certificates {
+  // .contact-section {
   //   .header {
   //     font-size: 2.5rem;
   //   }
-  //   .swiper-container {
-  //     .swiper-slide {
-  //       flex-direction: column;
-  //       img {
-  //         height: 40vw;
-  //       }
-  //       .slide-info {
-  //         width: 100%;
-  //         padding: 10px;
+  //   .contact-container {
+  //     grid-template-areas: 
+  //       "contact-form"
+  //       "contact-social";
+  //     grid-template-columns: 1fr;
+  //     gap: 1rem;
+  //     .contact-form, .contact-social {
+  //       width: 100%;
+  //       max-width: 100%;
+  //       padding: 1rem;
+  //     }
+  //     .contact-social {
+  //       flex-direction: row;
+  //       flex-wrap: wrap;
+  //       justify-content: center;
+  //       .social-link {
+  //         margin-bottom: 0.5rem;
   //       }
   //     }
   //   }
@@ -82,42 +61,25 @@ $breakpoint-mobile: 600px;
     }
   }
 
-  .contact-section {
-    .header {
-      font-size: 1.5rem;
-    }
-    .contact-container {
-      .contact-form, .contact-social {
-        padding: 0.5rem;
-      }
-      .contact-social {
-        gap: 0.5rem;
-        .social-link {
-          .social-link-container {
-            width: 36px;
-            height: 36px;
-            margin-right: 10px;
-          }
-          p {
-            font-size: 1rem;
-          }
-        }
-      }
-    }
-  }
-
-  // .certificates {
+  // .contact-section {
   //   .header {
   //     font-size: 1.5rem;
   //   }
-  //   .swiper-container {
-  //     .swiper-slide {
-  //       img {
-  //         height: 25vw;
-  //       }
-  //       .slide-info {
-  //         font-size: 0.9rem;
-  //         padding: 5px;
+  //   .contact-container {
+  //     .contact-form, .contact-social {
+  //       padding: 0.5rem;
+  //     }
+  //     .contact-social {
+  //       gap: 0.5rem;
+  //       .social-link {
+  //         .social-link-container {
+  //           width: 36px;
+  //           height: 36px;
+  //           margin-right: 10px;
+  //         }
+  //         p {
+  //           font-size: 1rem;
+  //         }
   //       }
   //     }
   //   }
