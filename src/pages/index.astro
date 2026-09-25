@@ -1,0 +1,782 @@
+---
+import "@fontsource/geist/latin-400.css";
+import "@fontsource/geist/latin-500.css";
+import "@fontsource/geist/latin-600.css";
+import "@fontsource/geist/latin-700.css";
+import "@fontsource/geist-mono/latin-400.css";
+import "../styles/global.css";
+import { data, featured, projects, categories, areas, date } from "../lib/data";
+import ProjectVisual from "../components/ProjectVisual.astro";
+import EvidenceLinks from "../components/EvidenceLinks.astro";
+import MediaGallery from "../components/MediaGallery.astro";
+import { assetUrl } from "../lib/media";
+import SectionHeading from "../components/SectionHeading.astro";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const canonical = new URL(`${base}/`, Astro.site);
+const photo = data.portfolio_assets.profile_photo;
+const resume = data.portfolio_assets.resume.path;
+const education = data.education;
+const initials = data.profile.name
+  .split(" ")
+  .map((n) => n[0])
+  .join("");
+const shortName = data.profile.shortname;
+const social = Object.entries(data.contact).filter(
+  ([k, v]) =>
+    ["github", "linkedin", "kaggle", "medium"].includes(k) &&
+    typeof v === "string",
+) as [string, string][];
+const pad = (n: number) => String(n).padStart(2, "0");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#090a0d" />
+    <title>{data.profile.name} — {data.profile.professional_title}</title>
+    <meta name="description" content={data.profile.headline} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content={`${data.profile.name} — ${data.profile.professional_title}`}
+    />
+    <meta property="og:description" content={data.profile.headline} />
+    <meta property="og:url" content={canonical} />
+    <meta
+      property="og:image"
+      content={new URL(`${base}/social.png`, Astro.site)}
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline>
+      try {
+        const saved = localStorage.getItem("theme");
+        document.documentElement.dataset.theme =
+          saved === "dark" || saved === "light"
+            ? saved
+            : matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+      } catch {
+        document.documentElement.dataset.theme = matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches
+          ? "dark"
+          : "light";
+      }
+    </script>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: data.profile.name,
+        description: data.profile.headline,
+        url: canonical.toString(),
+        sameAs: social.map(([, v]) => v),
+        alumniOf: {
+          "@type": "CollegeOrUniversity",
+          name: education[0].institution,
+        },
+      }).replace(/</g, "\\u003c")}
+    ></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+    <div class="ambient" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <header class="header" id="header">
+      <a class="wordmark" href="#" aria-label={`${data.profile.name}, home`}>
+        {shortName.toUpperCase()}
+        <span>.</span>
+      </a>
+      <nav aria-label="Main navigation" id="navigation">
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#archive">Archive</a>
+        <a href="#about">About</a>
+      </nav>
+      <div class="header-actions">
+        {resume ? (
+          <a
+            class="header-contact"
+            href={
+              /^https?:/.test(resume)
+                ? resume
+                : `${base}/${resume.replace(/^\//, "")}`
+            }
+          >
+            Résumé <span>↗</span>
+          </a>
+        ) : (
+          <a class="header-contact" href="#contact">
+            Let’s talk <span>↗</span>
+          </a>
+        )}
+        <button
+          class="theme-toggle icon-button"
+          aria-label="Switch color theme"
+          title="Switch color theme"
+        >
+          <svg
+            class="sun"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5" />
+          </svg>
+          <svg
+            class="moon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            aria-hidden="true"
+          >
+            <path d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z" />
+          </svg>
+        </button>
+        <button
+          class="menu-toggle icon-button"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          aria-controls="navigation"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            aria-hidden="true"
+          >
+            <path d="M4 8h16M4 16h16" />
+          </svg>
+        </button>
+      </div>
+    </header>
+    <main id="main">
+      <section
+        class="hero container"
+        id="hero"
+        data-ambient="hero"
+        aria-labelledby="hero-title"
+      >
+        <div class="hero-grid" aria-hidden="true"></div>
+        {photo.available && photo.path_or_url && (
+          <figure class="profile-portrait">
+            <img
+              src={assetUrl(photo.path_or_url)}
+              alt={photo.alt || data.profile.name}
+              width="560"
+              height="700"
+              style={{ objectPosition: photo.position }}
+              fetchpriority="high"
+            />
+            <figcaption class="mono">{data.profile.location}</figcaption>
+          </figure>
+        )}
+        <div class="hero-copy">
+          <p class="eyebrow entrance">
+            <span class="tiny-square"></span>
+            {data.profile.professional_title}
+          </p>
+          <h1 id="hero-title">
+            <span class="name-line">{data.profile.name.split(" ")[0]}</span>
+            <span class="name-line">
+              {data.profile.name.split(" ").slice(1).join(" ")}
+              <span class="accent">.</span>
+            </span>
+          </h1>
+          <p class="hero-description entrance">{data.profile.headline}</p>
+          <div class="hero-actions entrance">
+            <a class="button primary" href="#work">
+              {data.portfolio_sections.hero.primary_cta}
+              <span>↗</span>
+            </a>
+            <a
+              class="text-link"
+              href={data.contact.github}
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub <span>↗</span>
+            </a>
+            <a
+              class="text-link"
+              href={data.contact.linkedin}
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn <span>↗</span>
+            </a>
+          </div>
+          <div class="hero-location mono entrance">
+            <span>{data.profile.location}</span>
+            <span class="availability">
+              <i></i>Open to opportunities
+            </span>
+          </div>
+        </div>
+        <div class="hero-edge mono">
+          <span>
+            {education[0].degree} · {education[0].institution}
+          </span>
+          <a href="#work">
+            SCROLL TO EXPLORE <span>↓</span>
+          </a>
+        </div>
+      </section>
+      <div class="container metrics glass" aria-label="Portfolio at a glance">
+        <div>
+          <strong>{pad(data.experience.length)}</strong>
+          <span>Industry internships</span>
+          <span class="metric-note mono">AI · SOFTWARE · DATA</span>
+        </div>
+        <div>
+          <strong>{pad(projects.length)}</strong>
+          <span>Projects & experiments</span>
+          <span class="metric-note mono">FROM MODELS TO SYSTEMS</span>
+        </div>
+        <div>
+          <strong>{pad(data.technical_fields.length)}</strong>
+          <span>Engineering disciplines</span>
+          <span class="metric-note mono">CURIOSITY WITHOUT SILOS</span>
+        </div>
+      </div>
+      <section
+        class="container section work"
+        id="work"
+        data-ambient="work"
+        aria-labelledby="work-title"
+      >
+        <SectionHeading
+          number="01"
+          title="Selected work"
+          note="A closer look at the systems I build."
+        />
+        <div class="work-layout">
+          <div class="work-rail glass">
+            <div class="rail-label mono">
+              SELECTED PROJECTS <span>↘</span>
+            </div>
+            <div class="rail-panels">
+              {featured.map((p, i) => (
+                <div
+                  class:list={["rail-panel", { active: i === 0 }]}
+                  data-rail={i}
+                  aria-hidden={i !== 0}
+                  inert={i !== 0}
+                >
+                  <div class="project-index mono">
+                    <span>{pad(i + 1)}</span>
+                    <span>/ {pad(featured.length)}</span>
+                  </div>
+                  <p class="eyebrow project-category">{p.category}</p>
+                  <h3>{p.name}</h3>
+                  <p class="project-summary">{p.summary}</p>
+                  <p class="tech-line mono">
+                    {p.technologies.slice(0, 3).join(" · ")}
+                  </p>
+                  <a
+                    href={`#project-${p.slug}`}
+                    class="text-link project-open"
+                    data-project={p.slug}
+                    tabindex={i === 0 ? 0 : -1}
+                  >
+                    View project <span>↗</span>
+                  </a>
+                </div>
+              ))}
+            </div>
+            <div class="project-progress" aria-hidden="true">
+              {featured.map((_, i) => (
+                <span class:list={{ active: i === 0 }} data-step={i}></span>
+              ))}
+            </div>
+          </div>
+          <div class="work-cards">
+            {featured.map((p, i) => (
+              <article
+                class:list={["featured-card", { active: i === 0 }]}
+                data-featured={i}
+              >
+                <a
+                  class="media-link project-open"
+                  href={`#project-${p.slug}`}
+                  data-project={p.slug}
+                  aria-label={`View ${p.name}`}
+                >
+                  <ProjectVisual project={p} />
+                  <span class="media-arrow">↗</span>
+                </a>
+                <div class="card-meta mono">
+                  <span>
+                    {pad(i + 1)} / {p.category}
+                  </span>
+                  <span>
+                    {p.status === "deployed"
+                      ? "LIVE ↗"
+                      : p.status === "production"
+                        ? "IN PRODUCTION"
+                        : p.year}
+                  </span>
+                </div>
+                <div class="mobile-project-copy">
+                  <h3>{p.name}</h3>
+                  <p>{p.summary}</p>
+                  <a
+                    class="text-link project-open"
+                    href={`#project-${p.slug}`}
+                    data-project={p.slug}
+                  >
+                    View project <span>↗</span>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section
+        class="container section"
+        id="experience"
+        data-ambient="experience"
+      >
+        <SectionHeading
+          number="02"
+          title="Built in the real world"
+          note="Experience across research and industry."
+        />
+        <div class="timeline">
+          {data.experience.map((e, i) => (
+            <article class="experience-item">
+              <div class="experience-date mono">
+                <span class="timeline-dot"></span>
+                {date(e.start_date)} — {date(e.end_date)}
+                {e.status === "current" && (
+                  <span class="current-label">CURRENT</span>
+                )}
+              </div>
+              <div class="experience-content">
+                <span class="eyebrow">{e.role}</span>
+                <h3>{e.organization}</h3>
+                <p>{e.public_description}</p>
+                <ul>
+                  {(e.quantified_results.length
+                    ? e.quantified_results
+                    : e.work.slice(0, 3)
+                  ).map((w) => (
+                    <li>{w}</li>
+                  ))}
+                </ul>
+                <div class="tech-line mono">{e.technologies.join(" · ")}</div>
+                <details>
+                  <summary>
+                    Responsibilities <span>+</span>
+                  </summary>
+                  <ul>
+                    {e.work.map((w) => (
+                      <li>{w}</li>
+                    ))}
+                  </ul>
+                </details>
+              </div>
+              <span class="experience-number mono" aria-hidden="true">
+                {pad(i + 1)}
+              </span>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section class="container section" id="archive" data-ambient="archive">
+        <SectionHeading
+          number="03"
+          title="The wider picture"
+          note="Production systems, side projects, and experiments."
+        />
+        <div class="archive-toolbar glass">
+          <div
+            class="filters"
+            role="group"
+            aria-label="Filter projects by category"
+          >
+            <button data-filter="All" aria-pressed="true">
+              All <span>{projects.length}</span>
+            </button>
+            {categories.map((c) => (
+              <button data-filter={c} aria-pressed="false">
+                {c}
+              </button>
+            ))}
+          </div>
+          <span id="result-count" class="mono" role="status" aria-live="polite">
+            {projects.length} projects
+          </span>
+        </div>
+        <div class="archive-layout">
+          <div class="archive-list">
+            <div class="archive-head mono" aria-hidden="true">
+              <span>YEAR</span>
+              <span>PROJECT / TECHNOLOGIES</span>
+              <span>↗</span>
+            </div>
+            {projects.map((p) => (
+              <a
+                href={`#project-${p.slug}`}
+                data-project={p.slug}
+                data-categories={p.categories.join(",")}
+                class="archive-row project-open"
+              >
+                <span class="archive-year mono">{p.year || "—"}</span>
+                <div>
+                  <h3>{p.name}</h3>
+                  <p class="mono">{p.technologies.slice(0, 3).join(" · ")}</p>
+                </div>
+                <span class="row-arrow">↗</span>
+              </a>
+            ))}
+            <p class="empty-results" hidden>
+              No projects match these categories. Select All to reset.
+            </p>
+          </div>
+          <aside class="archive-preview glass" aria-label="Project preview">
+            <div id="preview-visual">
+              <ProjectVisual project={projects[0]} compact />
+            </div>
+            <div class="preview-caption">
+              <span class="eyebrow">PROJECT INDEX</span>
+              <h3 id="preview-title">{projects[0].name}</h3>
+              <p id="preview-summary">{projects[0].summary}</p>
+              <span class="mono preview-hint">HOVER OR FOCUS TO EXPLORE ↗</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+      <section
+        class="container section"
+        id="engineering"
+        data-ambient="engineering"
+      >
+        <SectionHeading
+          number="04"
+          title="Across the stack"
+          note="Different disciplines. Connected thinking."
+        />
+        <div class="areas">
+          {areas.map((a, i) => (
+            <details class="area">
+              <summary>
+                <span class="mono">{pad(i + 1)}</span>
+                <h3>{a.name}</h3>
+                <span class="area-plus">+</span>
+              </summary>
+              <div class="area-content">
+                <div class="tags">
+                  {a.skills.map((s) => (
+                    <span>{s}</span>
+                  ))}
+                </div>
+                <a
+                  href={`?categories=${a.filter}#archive`}
+                  class="text-link area-filter"
+                  data-area-filter={a.filter}
+                >
+                  Explore{" "}
+                  {
+                    projects.filter((p) => p.categories.includes(a.filter))
+                      .length
+                  }{" "}
+                  related projects <span>↗</span>
+                </a>
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+      <section
+        class="container section"
+        id="recognition"
+        data-ambient="recognition"
+      >
+        <SectionHeading number="05" title="Recognition" />
+        <div class="awards">
+          {data.achievements.map((a, i) => (
+            <article class="award">
+              <span class="award-number" aria-hidden="true">
+                {pad(i + 1)}
+              </span>
+              <div>
+                <span class="eyebrow">{a.year || a.event}</span>
+                <h3>{a.title}</h3>
+                <p>{a.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div class="credentials">
+          <h3 class="support-heading">
+            Continued learning <span class="mono">CREDENTIALS</span>
+          </h3>
+          {data.certifications.map((c) => (
+            <div class="credential-row">
+              <span>{c.issuer || "—"}</span>
+              <div class="credential-info">
+                <strong>{c.credential}</strong>
+                <div class="credential-actions">
+                  {c.file && (
+                    <a
+                      href={assetUrl(c.file)}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`View certificate: ${c.credential}`}
+                    >
+                      View certificate ↗
+                    </a>
+                  )}
+                  {c.verification_url && (
+                    <a
+                      href={c.verification_url}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Verify credential: ${c.credential}`}
+                    >
+                      Verify credential ↗
+                    </a>
+                  )}
+                </div>
+              </div>
+              <span class="mono">{c.date || "—"}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section class="container section about" id="about" data-ambient="about">
+        <SectionHeading number="06" title="More than one direction" />
+        <div class="about-grid">
+          <div class="about-copy">
+            <p class="large-copy">
+              {data.profile.short_bio || data.profile.headline}
+            </p>
+            <p>{data.career_direction.problems_of_interest.join(". ")}.</p>
+            <div class="interests">
+              <span class="eyebrow">AWAY FROM THE KEYBOARD</span>
+              <p>{data.personal_interests.join(" · ")}</p>
+            </div>
+          </div>
+          <div class="about-aside glass">
+            {education.map((e) => (
+              <div>
+                <span class="eyebrow">
+                  EDUCATION · {e.start_date.slice(0, 4)}—{e.expected_graduation}
+                </span>
+                <h3>{e.institution}</h3>
+                <p>
+                  {e.degree}
+                  <br />
+                  {e.branch}
+                </p>
+                <span class="mono">
+                  CGPA {e.cgpa} · {e.current_year}
+                </span>
+              </div>
+            ))}
+            <div class="currently">
+              <span class="eyebrow">
+                <i class="status-dot"></i>CURRENTLY EXPLORING
+              </span>
+              {data.current_work.map((w) => (
+                <p>
+                  <strong>{w.name}</strong>
+                  <br />
+                  {w.description}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div class="writing">
+          <h3 class="support-heading">
+            Notes from the process <span class="mono">RESEARCH & WRITING</span>
+          </h3>
+          {data.research_and_publications.map((p) => (
+            <a
+              href={p.link}
+              target="_blank"
+              rel="noreferrer"
+              class="writing-row"
+            >
+              <span class="mono">
+                {p.platform} · {p.date}
+              </span>
+              <strong>{p.title}</strong>
+              <span>↗</span>
+            </a>
+          ))}
+        </div>
+        <div class="communities">
+          {data.communities_and_extracurriculars.map((c) => (
+            <p>
+              <span class="eyebrow">COMMUNITY</span> {c.role} · {c.organization}
+            </p>
+          ))}
+        </div>
+      </section>
+      <section class="contact-section" id="contact" data-ambient="contact">
+        <div class="container">
+          <p class="eyebrow">
+            <i class="status-dot"></i>OPEN TO WHAT’S NEXT
+          </p>
+          <h2>
+            Have something
+            <br />
+            <span>ambitious in mind?</span>
+          </h2>
+          <p>{data.opportunities.preferred_opportunity_description}</p>
+          <a class="contact-email" href={`mailto:${data.contact.email}`}>
+            {data.contact.email}
+            <span>↗</span>
+          </a>
+          <div class="contact-bottom">
+            <span class="wordmark">
+              {shortName.toUpperCase()}
+              <span>.</span>
+            </span>
+            <div>
+              {social.map(([label, url]) => (
+                <a href={url} target="_blank" rel="noreferrer">
+                  {label[0].toUpperCase() + label.slice(1)} ↗
+                </a>
+              ))}
+            </div>
+            <span class="mono">
+              © {new Date().getFullYear()} {initials}
+            </span>
+            <a class="back-top mono" href="#hero">
+              BACK TO TOP ↑
+            </a>
+          </div>
+        </div>
+      </section>
+      <section
+        class="project-details container"
+        aria-label="Project case studies"
+      >
+        {projects.map((p) => (
+          <article
+            class="case-study"
+            id={`project-${p.slug}`}
+            data-case={p.slug}
+          >
+            <div class="drawer-meta mono">
+              {p.category} {p.year ? ` / ${p.year}` : ""}
+            </div>
+            <h2>{p.name}</h2>
+            <p class="case-intro">{p.summary}</p>
+            <div class="case-cover" hidden>
+              <ProjectVisual project={p} />
+            </div>
+            <MediaGallery media={p.media} title={p.name} />
+            <EvidenceLinks links={p.links} />
+            <div class="case-block">
+              <h3>Problem / Idea</h3>
+              <p>{p.summary}</p>
+            </div>
+            <div class="case-block">
+              <h3>What I built</h3>
+              <p>{p.description}</p>
+              {p.built.length > 0 && (
+                <ul>
+                  {p.built.map((b) => (
+                    <li>{b}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            {p.engineering && (
+              <div class="case-block">
+                <h3>Engineering</h3>
+                <p>{p.engineering}</p>
+              </div>
+            )}
+            {(Object.keys(p.metrics).length > 0 ||
+              p.recognition.length > 0) && (
+              <div class="case-block">
+                <h3>Results / Outcomes</h3>
+                <dl class="case-metrics">
+                  {Object.entries(p.metrics).map(([k, v]) => (
+                    <div>
+                      <dt>{k.replaceAll("_", " ")}</dt>
+                      <dd>{v}</dd>
+                    </div>
+                  ))}
+                </dl>
+                {p.recognition.map((r) => (
+                  <p class="recognition-note">{r}</p>
+                ))}
+              </div>
+            )}
+            <div class="case-block">
+              <h3>Technologies</h3>
+              <div class="tags">
+                {p.technologies.map((t) => (
+                  <span>{t}</span>
+                ))}
+              </div>
+            </div>
+            <a class="case-back text-link" href="#archive">
+              Back to projects ↑
+            </a>
+          </article>
+        ))}
+      </section>
+    </main>
+    <dialog class="project-dialog" aria-labelledby="dialog-title">
+      <div class="drawer-bar glass">
+        <span class="mono">PROJECT / IN DETAIL</span>
+        <button
+          class="icon-button drawer-close"
+          aria-label="Close project details"
+        >
+          ×
+        </button>
+      </div>
+      <div class="drawer-content"></div>
+    </dialog>
+    <script src="../scripts/site.ts"></script>
+    <dialog class="media-dialog" aria-labelledby="media-title">
+      <div class="media-viewer-bar">
+        <span id="media-title" class="mono">
+          Project image
+        </span>
+        <button
+          class="icon-button media-close"
+          aria-label="Close image preview"
+        >
+          ×
+        </button>
+      </div>
+      <div class="media-viewer-image">
+        <img alt="" />
+      </div>
+      <div class="media-viewer-footer">
+        <button class="icon-button media-previous" aria-label="Previous image">
+          ←
+        </button>
+        <p class="media-caption" aria-live="polite"></p>
+        <button class="icon-button media-next" aria-label="Next image">
+          →
+        </button>
+      </div>
+    </dialog>
+  </body>
+</html>

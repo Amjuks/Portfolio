@@ -1,0 +1,51 @@
+---
+import type { Project } from "../lib/data";
+import { assetUrl, mediaStyle, youtubeId } from "../lib/media";
+interface Props {
+  project: Project;
+  compact?: boolean;
+}
+const { project: p, compact = false } = Astro.props;
+const cover = p.media.find(
+  (m) => (m.type !== "video" && m.type !== "youtube") || m.poster,
+);
+const src =
+  cover?.type === "video" || cover?.type === "youtube"
+    ? cover.poster
+    : cover?.src;
+---
+
+<div
+  class:list={[
+    "project-visual",
+    { compact, "actual-preview": !!src, "text-preview": !src },
+  ]}
+>
+  {src ? (
+    <>
+      <img
+        src={assetUrl(src)}
+        alt={cover?.alt || p.name}
+        width="1200"
+        height="750"
+        loading="lazy"
+        style={mediaStyle(cover!)}
+      />
+      <span class="preview-source mono">
+        {cover?.source_label ||
+          (cover?.type === "video" || youtubeId(cover?.src || "")
+            ? "Video preview"
+            : "Project image")}
+      </span>
+    </>
+  ) : (
+    <div class="project-text-summary">
+      <span class="eyebrow">{p.category}</span>
+      <h4>{p.name}</h4>
+      <p>{p.summary}</p>
+      <span class="text-link">
+        Explore project <span aria-hidden="true">↗</span>
+      </span>
+    </div>
+  )}
+</div>

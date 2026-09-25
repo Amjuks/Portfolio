@@ -1,0 +1,84 @@
+---
+import { assetUrl, mediaStyle, youtubeId, type Media } from "../lib/media";
+interface Props {
+  media: Media[];
+  title: string;
+}
+const { media, title } = Astro.props;
+---
+
+{media.length > 0 && (
+  <div class="media-gallery" aria-label={`${title} media`}>
+    {media.map((m, i) => (
+      <figure>
+        {m.type === "youtube" && youtubeId(m.src) ? (
+          <div class="youtube-preview">
+            <a
+              class="youtube-play"
+              href={m.src}
+              data-youtube={youtubeId(m.src)}
+              data-video-title={m.alt}
+              aria-label={`Play ${m.alt}`}
+            >
+              {m.poster && (
+                <img
+                  src={assetUrl(m.poster)}
+                  alt=""
+                  loading="lazy"
+                  width="1200"
+                  height="675"
+                  style={mediaStyle(m)}
+                />
+              )}
+              <span class="video-play-label">
+                <span aria-hidden="true">▷</span> Play video
+              </span>
+            </a>
+          </div>
+        ) : m.type === "video" ? (
+          <video
+            controls
+            preload="none"
+            poster={m.poster ? assetUrl(m.poster) : undefined}
+            aria-label={m.alt}
+          >
+            <source src={assetUrl(m.src)} />
+            <a href={assetUrl(m.src)}>Watch video</a>
+          </video>
+        ) : (
+          <a
+            class="media-open"
+            href={assetUrl(m.src)}
+            data-caption={m.caption || m.alt}
+            aria-label={`Enlarge ${m.alt}`}
+          >
+            <div class="gallery-frame">
+              <img
+                src={assetUrl(m.src)}
+                alt={m.alt}
+                width="1200"
+                height="750"
+                loading="lazy"
+                style={mediaStyle(m)}
+              />
+            </div>
+            <span class="gallery-expand mono">
+              {String(i + 1).padStart(2, "0")} / Enlarge image{" "}
+              <span aria-hidden="true">↗</span>
+            </span>
+          </a>
+        )}
+        {(m.caption || m.source_url) && (
+          <figcaption>
+            <span>{m.caption}</span>
+            {m.source_url && (
+              <a href={m.source_url} target="_blank" rel="noreferrer">
+                {m.source_label || "Original source"} ↗
+              </a>
+            )}
+          </figcaption>
+        )}
+      </figure>
+    ))}
+  </div>
+)}

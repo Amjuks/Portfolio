@@ -1,0 +1,16 @@
+---
+interface Props {
+  number: string;
+  title: string;
+  note?: string;
+}
+const { number, title, note } = Astro.props;
+---
+
+<div class="section-heading">
+  <div>
+    <span class="eyebrow">{number} /</span>
+    <h2 id={number === "01" ? "work-title" : undefined}>{title}</h2>
+  </div>
+  {note && <p>{note}</p>}
+</div>

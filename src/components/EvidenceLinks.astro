@@ -1,0 +1,34 @@
+---
+import { evidenceInfo, type Evidence } from "../lib/media";
+import ResourceIcon from "./ResourceIcon.astro";
+interface Props {
+  links: Evidence[];
+}
+const { links } = Astro.props;
+---
+
+{links.length > 0 && (
+  <div class="evidence-links" aria-label="Project resources">
+    {links.map((link) => {
+      const info = evidenceInfo(link.url);
+      return (
+        <a
+          class="evidence-link"
+          href={link.url}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span class="evidence-symbol" aria-hidden="true">
+            <ResourceIcon platform={info.platform} />
+          </span>
+          <span>
+            <span class="eyebrow">{info.platform}</span>
+            <strong>{link.label}</strong>
+            <span class="evidence-path mono">{info.path || info.platform}</span>
+          </span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      );
+    })}
+  </div>
+)}

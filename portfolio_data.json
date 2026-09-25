@@ -1,0 +1,1346 @@
+{
+  "meta": {
+    "schema_version": "1.0",
+    "last_updated": "2026-09-24",
+    "status": "draft",
+    "source_of_truth": "Latest resume dated 2026-09-22 plus portfolio/project context"
+  },
+  "profile": {
+    "name": "Mohammed Aman Jukaku",
+    "shortname": "Aman Jukaku",
+    "professional_title": "AI & Software Engineer",
+    "headline": "I build intelligent systems across LLMs, machine learning, data engineering, computer vision, robotics, and simulation.",
+    "short_bio": "",
+    "location": "Bengaluru, Karnataka, India",
+    "30_second_impression": [
+      "Builds real AI systems, not just notebooks.",
+      "Broad technical range across LLMs, data engineering, computer vision, robotics, simulations, and production software.",
+      "Ships and measures systems with meaningful technical scale and results."
+    ],
+    "headline_metrics": [
+      "7.7M-parameter Transformer LLM",
+      "Hundreds of millions of LLM data samples",
+      "Multimodal biometric AI system",
+      "Autonomous computer-vision robotics",
+      "Production software serving communities representing ~100,000 members"
+    ]
+  },
+  "contact": {
+    "email": "aman.jukaku@gmail.com",
+    "github": "https://github.com/Amjuks",
+    "linkedin": "https://www.linkedin.com/in/amanjukaku/",
+    "portfolio": "https://amjuks.github.io/Portfolio/",
+    "kaggle": "https://www.kaggle.com/amjuks",
+    "medium": "https://medium.com/@aman.jukaku",
+    "hugging_face": "",
+    "other_profiles": []
+  },
+  "education": [
+    {
+      "institution": "R V College of Engineering",
+      "degree": "Bachelor of Engineering",
+      "branch": "Information Science Engineering",
+      "current_year": "3rd Year",
+      "current_semester": "5th Semester",
+      "cgpa": "8.4/10",
+      "start_date": "2024",
+      "expected_graduation": "2028",
+      "location": "Bengaluru, Karnataka, India",
+      "activities": [
+        "Member, Google Developer Groups (GDG) - Campus Chapter"
+      ],
+      "relevant_coursework": [],
+      "academic_achievements": []
+    }
+  ],
+  "opportunities": {
+    "currently_looking_for": [
+      "AI/ML internships",
+      "Software engineering internships",
+      "LLM / Generative AI roles",
+      "AI research / applied research",
+      "AI systems / data engineering",
+      "Computer vision / robotics",
+      "Startup engineering roles",
+      "Technical collaborations"
+    ],
+    "preferred_opportunity_description": "Open to AI/ML, software engineering, research, and technically ambitious startup opportunities.",
+    "remote_or_onsite_preference": "",
+    "target_locations": [],
+    "target_companies": []
+  },
+  "technical_fields": [
+    "Generative AI & LLMs",
+    "Machine Learning & Deep Learning",
+    "Computer Vision",
+    "AI/Data Engineering",
+    "Backend & Full-Stack Development",
+    "Robotics & Embedded Systems",
+    "Simulation & Computational Systems"
+  ],
+  "skills": {
+    "programming_languages": [
+      "Python",
+      "C",
+      "SQL",
+      "Web"
+    ],
+    "ai_ml": [
+      "PyTorch",
+      "TensorFlow",
+      "Hugging Face",
+      "Transformers",
+      "scikit-learn",
+      "OpenCV",
+      "CNNs",
+      "GANs",
+      "LLMs",
+      "Grad-CAM"
+    ],
+    "data": [
+      "NumPy",
+      "Pandas",
+      "Data Pipelines",
+      "Dataset Curation",
+      "Synthetic Data Generation",
+      "Data Processing",
+      "Data Validation",
+      "Deduplication",
+      "Data Annotation"
+    ],
+    "backend_web": [
+      "Django",
+      "Flask",
+      "REST APIs",
+      "Node.js",
+      "PostgreSQL",
+      "MongoDB",
+      "Firebase"
+    ],
+    "infrastructure": [
+      "Git",
+      "GitHub",
+      "Linux",
+      "Docker",
+      "Kubernetes",
+      "CI/CD",
+      "Google Cloud Platform"
+    ],
+    "robotics_embedded": [
+      "ESP32",
+      "YOLO",
+      "Embedded Systems",
+      "IoT",
+      "Computer Vision"
+    ],
+    "other": []
+  },
+  "experience": [
+    {
+      "organization": "Soket AI",
+      "role": "Technical Staff Intern",
+      "start_date": "2026-07",
+      "end_date": null,
+      "status": "current",
+      "location": "India",
+      "public_description": "Building AI-agent-driven systems for programmatic 3D scene generation and game-tool workflows.",
+      "work": [
+        "LLM-agent-driven 3D scene generation",
+        "Programmatic 3D scene construction",
+        "AI-agent orchestration",
+        "Automated synthetic 3D data generation",
+        "Game-tool ecosystem development",
+        "Interactive puzzle/game domains",
+        "Game logic and tool execution",
+        "Synthetic interaction-data generation for LLM training"
+      ],
+      "quantified_results": [],
+      "technologies": [
+        "LLMs",
+        "AI Agents",
+        "3D Frameworks",
+        "Python",
+        "Synthetic Data",
+        "Game Tooling"
+      ],
+      "confidentiality": {
+        "restricted": true,
+        "avoid_public_details": [
+          "Proprietary datasets",
+          "Internal prompts",
+          "Proprietary architectures",
+          "Internal infrastructure",
+          "Private source code",
+          "Unpublished internal specifications",
+          "Confidential company data"
+        ],
+        "public_safe_description": "Describe systems and technical responsibilities at a high level without exposing proprietary implementation details."
+      },
+      "links": []
+    },
+    {
+      "organization": "Indian Institute of Technology Gandhinagar",
+      "role": "Data Curation Intern",
+      "start_date": "2026-03",
+      "end_date": "2026-06",
+      "status": "completed",
+      "location": "India",
+      "public_description": "Built large-scale automated pipelines for LLM dataset collection, curation, standardization, and synthetic instruction-tuning data generation.",
+      "work": [
+        "Data collection",
+        "Web/data scraping",
+        "Cleaning",
+        "Normalization",
+        "Deduplication",
+        "Filtering",
+        "Annotation",
+        "Validation",
+        "Synthetic instruction-tuning datasets",
+        "Single-turn and multi-turn dataset generation",
+        "Schema standardization",
+        "Conversational dataset analysis",
+        "Response quality analysis",
+        "Token and sequence distribution analysis",
+        "Domain balance analysis",
+        "Structural consistency analysis"
+      ],
+      "quantified_results": [
+        "Automated LLM data pipelines operating at hundreds-of-millions-of-samples scale"
+      ],
+      "technologies": [
+        "Python",
+        "Hugging Face",
+        "LLM APIs",
+        "Cloud Infrastructure",
+        "Data Pipelines",
+        "Synthetic Data Generation"
+      ],
+      "confidentiality": {
+        "restricted": true,
+        "avoid_public_details": [
+          "Proprietary foundation-model outputs",
+          "Restricted datasets",
+          "Private infrastructure",
+          "Confidential internal workflows"
+        ],
+        "public_safe_description": "Emphasize data engineering scale, pipeline architecture, curation methods, and synthetic-data workflows."
+      },
+      "links": []
+    },
+    {
+      "organization": "Emertxe Information Technologies",
+      "role": "Software Developer Intern",
+      "start_date": "2024-05",
+      "end_date": "2024-09",
+      "status": "completed",
+      "location": "Bengaluru, Karnataka, India",
+      "public_description": "Developed LLM-powered applications and a full-stack platform for testing, managing, and deploying fine-tuned models.",
+      "work": [
+        "Fine-tuned OpenAI foundation models for domain-specific tasks",
+        "Integrated model inference into application workflows",
+        "Built full-stack platform for testing fine-tuned LLMs",
+        "Built LLM management and deployment workflows",
+        "Developed AI mock-interview system",
+        "Automated interview question generation",
+        "Automated interview sessions",
+        "Response analysis",
+        "AI-driven scoring and evaluation reports"
+      ],
+      "quantified_results": [],
+      "technologies": [
+        "OpenAI Models",
+        "LLMs",
+        "Python",
+        "Full-Stack Development",
+        "APIs"
+      ],
+      "confidentiality": {
+        "restricted": false,
+        "avoid_public_details": [],
+        "public_safe_description": ""
+      },
+      "links": []
+    }
+  ],
+  "featured_projects": [
+    {
+      "name": "Transformer Language Model From Scratch",
+      "slug": "transformer-language-model-from-scratch",
+      "year": 2025,
+      "status": "completed",
+      "category": "LLM / Generative AI",
+      "one_line_purpose": "Build and train a small autoregressive language model from the core Transformer architecture.",
+      "description": "Built a 7.7M-parameter autoregressive Transformer from scratch with custom BPE tokenization and an end-to-end training pipeline.",
+      "personally_built": [
+        "Transformer architecture",
+        "Multi-head self-attention",
+        "Custom BPE tokenizer",
+        "Dataset preparation",
+        "Training pipeline",
+        "Model training",
+        "Interactive generation demo"
+      ],
+      "technologies": [
+        "PyTorch",
+        "Transformers",
+        "BPE",
+        "Python"
+      ],
+      "metrics": {
+        "parameters": "7.7M",
+        "vocabulary_size": "32K tokens",
+        "sequence_length": "256 tokens",
+        "training_steps": 10000,
+        "training_samples": "~140K"
+      },
+      "technical_highlight": "Implemented the core Transformer language-model pipeline rather than relying solely on a hosted LLM API.",
+      "links": {
+        "github": "https://github.com/Amjuks/LLM-Experimental",
+        "live_demo": "",
+        "video": "",
+        "article": "",
+        "kaggle": "",
+        "paper": "",
+        "other": []
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "projects/transformer-language-model-from-scratch/llm_what_do_you_like.png",
+          "alt": "Small LLM responding to a question about what it likes to do",
+          "caption": "The model generating a response about its interests.",
+          "fit": "cover",
+          "source_label": "LLM Conversation",
+          "position": "center",
+          "background": "theme"
+        },
+        {
+          "type": "image",
+          "src": "projects/transformer-language-model-from-scratch/llm_introduce.png",
+          "alt": "Small LLM introducing itself in the interactive demo",
+          "caption": "The model introducing itself through the interactive web demo.",
+          "fit": "cover",
+          "position": "center",
+          "background": "theme"
+        },
+        {
+          "type": "image",
+          "src": "projects/transformer-language-model-from-scratch/llm_from.png",
+          "alt": "Small LLM responding to a question about where it is from",
+          "caption": "The model responding to a question about its origin.",
+          "fit": "cover",
+          "position": "center",
+          "background": "theme"
+        },
+        {
+          "type": "image",
+          "src": "projects/transformer-language-model-from-scratch/llm_what_do_you_do.png",
+          "alt": "Small LLM responding to a question about what it does",
+          "caption": "The model responding to a question about its capabilities.",
+          "fit": "cover",
+          "position": "center",
+          "background": "theme"
+        }
+      ],
+      "featured": true,
+      "presentation": "auto",
+      "preview_sources": [
+        {
+          "kind": "github",
+          "url": "https://github.com/Amjuks/LLM-Experimental",
+          "label": "GitHub repository",
+          "alt": "GitHub repository preview for LLM-Experimental",
+          "caption": "Repository preview supplied by GitHub."
+        }
+      ]
+    },
+    {
+      "name": "Decentralized Multimodal Biometric Identity System",
+      "slug": "decentralized-multimodal-biometric-identity-system",
+      "year": 2026,
+      "status": "completed",
+      "category": "AI / Security / Blockchain",
+      "one_line_purpose": "Build a privacy-preserving identity-verification system using face, voice, document biometrics, encryption, IPFS, and blockchain.",
+      "description": "Built a multimodal identity-verification platform combining facial recognition, voice verification, and identity-document analysis with decentralized storage and blockchain-based identity mappings.",
+      "personally_built": [
+        "Face verification",
+        "Voice verification",
+        "Document verification",
+        "Multimodal AI pipeline",
+        "AES-256-CBC encrypted biometric embeddings",
+        "IPFS storage",
+        "Ethereum Sepolia smart-contract identity mappings",
+        "Verification records"
+      ],
+      "technologies": [
+        "Deep Learning",
+        "IPFS",
+        "Ethereum",
+        "AES-256",
+        "Blockchain"
+      ],
+      "metrics": {
+        "users_evaluated": 50,
+        "facial_recognition_accuracy": "97.2%",
+        "voice_verification_accuracy": "89.6%",
+        "document_verification_accuracy": "92.4%",
+        "combined_multimodal_accuracy": "90.8%",
+        "false_acceptance_rate": "2%",
+        "raw_biometric_data": "~4 MB",
+        "ipfs_representation": "~12 KB",
+        "blockchain_representation": "32 bytes"
+      },
+      "technical_highlight": "Combined multimodal biometrics, encrypted storage, decentralized file storage, and blockchain identity mappings in one system.",
+      "links": {
+        "github": [
+          "https://github.com/Amjuks/Identity-Verification-System-Blockchain",
+          "https://github.com/Amjuks/De-centralised_Identity"
+        ],
+        "live_demo": "",
+        "video": "",
+        "article": "",
+        "kaggle": "",
+        "paper": "",
+        "other": []
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "projects/decentralized-multimodal-biometric-identity-system/page1.png",
+          "alt": "Homepage of the Decentralized Multimodal Biometric Identity System",
+          "caption": "Homepage of the decentralized multimodal biometric identity system.",
+          "source_label": "Blockchain Biometric Identity System Dashboard",
+          "fit": "cover"
+        },
+        {
+          "type": "image",
+          "src": "projects/decentralized-multimodal-biometric-identity-system/page2.png",
+          "alt": "Identity record page of the Decentralized Multimodal Biometric Identity System",
+          "caption": "Identity record displaying the registered biometric identity."
+        },
+        {
+          "type": "image",
+          "src": "projects/decentralized-multimodal-biometric-identity-system/page3.png",
+          "alt": "Successful registration page of the Decentralized Multimodal Biometric Identity System",
+          "caption": "Confirmation screen showing successful identity registration."
+        },
+        {
+          "type": "image",
+          "src": "projects/decentralized-multimodal-biometric-identity-system/page4.png",
+          "alt": "Verification page of the Decentralized Multimodal Biometric Identity System",
+          "caption": "Identity verification interface for checking a registered identity."
+        },
+        {
+          "type": "image",
+          "src": "projects/decentralized-multimodal-biometric-identity-system/page5.png",
+          "alt": "Verified identity page of the Decentralized Multimodal Biometric Identity System",
+          "caption": "Verification result confirming the identity successfully."
+        }
+      ],
+      "featured": true,
+      "presentation": "auto",
+      "preview_sources": [
+        {
+          "kind": "github",
+          "url": "https://github.com/Amjuks/Identity-Verification-System-Blockchain",
+          "label": "GitHub repository",
+          "alt": "GitHub repository preview for Identity-Verification-System-Blockchain",
+          "caption": "Repository preview supplied by GitHub."
+        },
+        {
+          "kind": "github",
+          "url": "https://github.com/Amjuks/De-centralised_Identity",
+          "label": "GitHub repository",
+          "alt": "GitHub repository preview for De-centralised_Identity",
+          "caption": "Repository preview supplied by GitHub."
+        }
+      ]
+    },
+    {
+      "name": "AI Smart Surveillance Robot",
+      "slug": "ai-smart-surveillance-robot",
+      "year": 2026,
+      "status": "completed",
+      "category": "Robotics / Computer Vision / Embedded Systems",
+      "one_line_purpose": "Build an autonomous mobile surveillance platform combining robotics, computer vision, navigation, and networked control.",
+      "description": "Built an autonomous surveillance robot using ESP32, Wi-Fi, ultrasonic sensing, DC motors, a custom 3D-printed chassis, YOLO object detection, target tracking, autonomous navigation, and a real-time web dashboard.",
+      "personally_built": [
+        "ESP32-based robot",
+        "Wi-Fi communication",
+        "Ultrasonic sensing",
+        "DC motor control",
+        "3D-printed chassis",
+        "YOLO object detection",
+        "Target tracking",
+        "Autonomous navigation",
+        "Tracking-loss alerts",
+        "Real-time web dashboard",
+        "Live video",
+        "Target selection",
+        "Robot controls",
+        "Event logs",
+        "Navigation mapping"
+      ],
+      "technologies": [
+        "ESP32",
+        "YOLO",
+        "Computer Vision",
+        "Embedded Systems",
+        "IoT",
+        "Web Development"
+      ],
+      "metrics": {},
+      "technical_highlight": "Integrated physical robotics, real-time computer vision, autonomous behavior, networking, and a web control/monitoring layer.",
+      "links": {
+        "github": "https://github.com/Amjuks/AI-Smart-Surveillance-Robot",
+        "live_demo": "",
+        "video": "",
+        "article": "",
+        "kaggle": "",
+        "paper": "",
+        "other": []
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "projects/ai-smart-surveillance-robot/robot_front.png",
+          "alt": "AI Smart Surveillance Robot viewed from the front",
+          "caption": "Front view of the AI Smart Surveillance Robot, presented against an enhanced background.",
+          "fit": "contain",
+          "source_label": "Robot Front View"
+        },
+        {
+          "type": "image",
+          "src": "projects/ai-smart-surveillance-robot/web_dashboard.png",
+          "alt": "Web dashboard for the AI Smart Surveillance Robot",
+          "caption": "Robot dashboard interface with live camera feed, optional manual controls, and system status information.",
+          "fit": "contain"
+        },
+        {
+          "type": "image",
+          "src": "projects/ai-smart-surveillance-robot/web_tracking.png",
+          "alt": "Target tracking interface for the AI Smart Surveillance Robot",
+          "caption": "Tracking interface showing target details, robot actions, configurable tracking distance, and detected objects.",
+          "fit": "contain"
+        },
+        {
+          "type": "image",
+          "src": "projects/ai-smart-surveillance-robot/web_map.png",
+          "alt": "Robot movement history map for the AI Smart Surveillance Robot",
+          "caption": "Mini map displaying the robot's movement history and tracked path.",
+          "fit": "contain"
+        }
+      ],
+      "featured": true,
+      "presentation": "auto",
+      "preview_sources": [
+        {
+          "kind": "github",
+          "url": "https://github.com/Amjuks/AI-Smart-Surveillance-Robot",
+          "label": "GitHub repository",
+          "alt": "GitHub repository preview for AI-Smart-Surveillance-Robot",
+          "caption": "Repository preview supplied by GitHub."
+        }
+      ]
+    },
+    {
+      "name": "Global Compass - Interactive 3D News Exploration Platform",
+      "slug": "global-compass",
+      "year": 2026,
+      "status": "deployed",
+      "category": "AI / 3D Web / Full-Stack",
+      "one_line_purpose": "Explore global news spatially through an interactive 3D globe with AI-powered regional summaries.",
+      "description": "Built and launched an interactive 3D globe platform for location-based news discovery, combining real-time news aggregation with AI-powered regional summaries.",
+      "personally_built": [
+        "Interactive 3D globe",
+        "Location-based news discovery",
+        "Real-time news aggregation",
+        "AI-powered regional summaries",
+        "Spatial navigation UX"
+      ],
+      "technologies": [
+        "Web Development",
+        "3D Visualization",
+        "APIs",
+        "AI"
+      ],
+      "metrics": {},
+      "technical_highlight": "Uses a spatial interface as the primary interaction model for exploring global events.",
+      "links": {
+        "github": "",
+        "live_demo": "https://spintheworld.world/",
+        "video": "",
+        "article": "",
+        "kaggle": "",
+        "paper": "",
+        "other": []
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "projects/global-compass/spin_home.png",
+          "alt": "Global Compass 3D globe news platform homepage",
+          "caption": "Interactive 3D globe homepage for location-based news discovery.",
+          "fit": "contain",
+          "source_label": "Global Compass Live"
+        },
+        {
+          "type": "image",
+          "src": "projects/global-compass/spin_news_open.png",
+          "alt": "Global Compass news article with AI summary and metadata",
+          "caption": "A location-based news article with an AI-generated summary and metadata.",
+          "fit": "cover"
+        },
+        {
+          "type": "image",
+          "src": "projects/global-compass/spin_news_details.png",
+          "alt": "Global Compass news headlines and details",
+          "caption": "News headlines and detailed information from the selected location.",
+          "fit": "cover"
+        }
+      ],
+      "featured": true,
+      "presentation": "auto",
+      "preview_sources": [
+        {
+          "kind": "website",
+          "url": "https://spintheworld.world/",
+          "label": "Live website",
+          "alt": "Screenshot of Global Compass - Interactive 3D News Exploration Platform",
+          "caption": "Captured from the live project website.",
+          "dismiss_text": "SKIP BRIEFING"
+        }
+      ]
+    },
+    {
+      "name": "Skin Lesion Classification",
+      "slug": "skin-lesion-classification",
+      "year": 2025,
+      "status": "completed",
+      "category": "Deep Learning / Medical Imaging",
+      "one_line_purpose": "Classify seven categories of skin lesions using an explainable CNN trained on HAM10000.",
+      "description": "Developed a 3.2M-parameter CNN for seven-class skin-lesion classification using class-weighted training to address dataset imbalance and Grad-CAM for explainability.",
+      "personally_built": [
+        "3.2M-parameter CNN",
+        "Seven-class classifier",
+        "HAM10000 data pipeline",
+        "Class-weighted training",
+        "Grad-CAM visualization"
+      ],
+      "technologies": [
+        "PyTorch",
+        "CNN",
+        "Grad-CAM",
+        "HAM10000"
+      ],
+      "metrics": {
+        "parameters": "3.2M",
+        "classes": 7,
+        "validation_accuracy": "~85%"
+      },
+      "technical_highlight": "Combined classification performance with visual explainability for medical imaging predictions.",
+      "recognition": [
+        "Winner, college-wide Researchathon"
+      ],
+      "links": {
+        "github": "https://github.com/Amjuks/Skin-Cancer-Classification-AI-Model",
+        "live_demo": "",
+        "video": "",
+        "article": "",
+        "kaggle": "https://www.kaggle.com/code/amjuks/skin-cancer-10k-v2/",
+        "paper": "",
+        "other": []
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "projects/skin-lesion-classification/skin_result.png",
+          "alt": "Skin lesion classification result with Grad-CAM visualization",
+          "caption": "Web interface displaying the model's skin-lesion prediction, Grad-CAM heatmap, and AI-generated explanation.",
+          "source_label": "Skin Lesion Classification",
+          "fit": "cover"
+        },
+        {
+          "type": "image",
+          "src": "projects/skin-lesion-classification/skin_upload.png",
+          "alt": "Skin lesion classification image upload interface",
+          "caption": "Web interface for uploading a skin-lesion image and providing the required model input details.",
+          "fit": "cover"
+        }
+      ],
+      "featured": true,
+      "presentation": "auto",
+      "preview_sources": [
+        {
+          "kind": "kaggle",
+          "url": "https://www.kaggle.com/code/amjuks/skin-cancer-10k-v2/",
+          "label": "Kaggle notebook",
+          "alt": "Skin Cancer 10k v2 notebook on Kaggle",
+          "caption": "The actual published Kaggle notebook.",
+          "dismiss_text": "OK, Got it."
+        }
+      ]
+    },
+    {
+      "name": "Particle Life Simulation",
+      "slug": "particle-life-simulation",
+      "year": 2025,
+      "status": "completed",
+      "category": "Simulation / Computational Systems",
+      "one_line_purpose": "Explore how complex emergent structures arise from simple particle interaction rules.",
+      "description": "Simulated particle systems to investigate emergence of order and complexity from simple interaction rules.",
+      "personally_built": [
+        "Particle interaction system",
+        "Emergent-behavior simulation",
+        "Interactive visualization",
+        "Simulation logic"
+      ],
+      "technologies": [
+        "Python",
+        "Simulation",
+        "Mathematics"
+      ],
+      "metrics": {},
+      "technical_highlight": "Demonstrates emergent behavior from simple local interaction rules.",
+      "links": {
+        "github": "https://github.com/Amjuks/Particle-Life-Simulation",
+        "live_demo": "https://amjuks.github.io/Particle-Life-Simulation",
+        "video": "",
+        "article": "https://medium.com/@aman.jukaku/particle-life-simulating-the-emergence-of-order-from-chaos-e006dbcc574a",
+        "kaggle": "",
+        "paper": "",
+        "other": []
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "projects/particle-life-simulation/live.gif",
+          "alt": "Live Particle Life Simulation",
+          "source_label": "Particle Simulation Live",
+          "source_url": "https://amjuks.github.io/Particle-Life-Simulation",
+          "caption": "Live simulation showing particles interacting according to attraction and repulsion rules.",
+          "fit": "cover"
+        },
+        {
+          "type": "image",
+          "src": "projects/particle-life-simulation/particle_blog.png",
+          "alt": "Medium article about the Particle Life Simulation",
+          "caption": "Medium article documenting the Particle Life Simulation and its underlying concepts.",
+          "source_url": "https://medium.com/@aman.jukaku/particle-life-simulating-the-emergence-of-order-from-chaos-e006dbcc574a",
+          "fit": "cover",
+          "position": "left"
+        }
+      ],
+      "featured": true,
+      "presentation": "auto",
+      "preview_sources": [
+        {
+          "kind": "website",
+          "url": "https://amjuks.github.io/Particle-Life-Simulation",
+          "label": "Live website",
+          "alt": "Screenshot of Particle Life Simulation",
+          "caption": "Captured from the live project website."
+        },
+        {
+          "kind": "github",
+          "url": "https://github.com/Amjuks/Particle-Life-Simulation",
+          "label": "GitHub repository",
+          "alt": "GitHub repository preview for Particle-Life-Simulation",
+          "caption": "Repository preview supplied by GitHub."
+        }
+      ]
+    },
+    {
+      "name": "BumpYourServer",
+      "slug": "bumpyourserver",
+      "year": 2025,
+      "status": "production",
+      "category": "Backend / Production Systems / Automation",
+      "one_line_purpose": "Operate a production Discord bot for server promotion, moderation, configuration, and cross-server communication.",
+      "description": "Built and operate a production Discord bot serving communities representing approximately 100,000 members.",
+      "personally_built": [
+        "Discord bot architecture",
+        "Asynchronous event handling",
+        "Server promotion",
+        "Moderation/reporting",
+        "Configuration",
+        "Cross-server global chat",
+        "Persistent data",
+        "Deployment",
+        "CI/CD",
+        "Reliability",
+        "Production operations"
+      ],
+      "technologies": [
+        "Python",
+        "discord.py",
+        "CI/CD",
+        "Production Systems"
+      ],
+      "metrics": {
+        "community_scale": "~100,000 members"
+      },
+      "technical_highlight": "Demonstrates long-running production software, asynchronous systems, persistence, deployment, CI/CD, and reliability.",
+      "links": {
+        "github": "",
+        "live_demo": "",
+        "video": "",
+        "article": "",
+        "kaggle": "",
+        "paper": "",
+        "other": []
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "public/projects/bump-your-server/bys_web.png",
+          "alt": "Bump Your Server Discord bot homepage",
+          "caption": "Homepage of Bump Your Server, a Discord bot for server promotion, moderation, configuration, and cross-server communication.",
+          "source_label": "BYS Homepage",
+          "fit": "cover"
+        },
+        {
+          "type": "image",
+          "src": "public/projects/bump-your-server/bys_discover.png",
+          "alt": "Bump Your Server discovery page",
+          "caption": "Discovery page for browsing and discovering Discord servers through Bump Your Server.",
+          "fit": "cover"
+        },
+        {
+          "type": "image",
+          "src": "public/projects/bump-your-server/bys_ads.png",
+          "alt": "Bump Your Server server advertising page",
+          "caption": "Server advertising interface showing promoted Discord servers on Bump Your Server.",
+          "fit": "cover"
+        },
+        {
+          "type": "image",
+          "src": "public/projects/bump-your-server/bys_global.png",
+          "alt": "Bump Your Server global chat in action",
+          "caption": "Global chat in action, demonstrating cross-server communication through Bump Your Server.",
+          "position": "left",
+          "fit": "cover"
+        },
+        {
+          "type": "image",
+          "src": "public/projects/bump-your-server/bys_bumps.png",
+          "alt": "Bump Your Server advertisements displayed in Discord",
+          "caption": "Server advertisements being displayed and promoted directly within Discord.",
+          "fit": "cover"
+        }
+      ],
+      "featured": true,
+      "presentation": "auto",
+      "preview_sources": []
+    }
+  ],
+  "project_archive": [
+    {
+      "name": "Scenery Generation GAN",
+      "description": "GAN for landscape image generation using a 14.6M-parameter generator and 33.9M-parameter discriminator trained on ~7,000 images.",
+      "link": "https://github.com/Amjuks/Scenery-Image-Generation-GAN",
+      "year": 2024,
+      "tags": [
+        "GAN",
+        "Deep Learning",
+        "Image Generation"
+      ],
+      "presentation": "auto",
+      "media": [
+        {
+          "type": "image",
+          "src": "projects/scenery-generation-gan/source-1.png",
+          "alt": "Grid of landscape images generated by the Scenery Generation GAN",
+          "caption": "Generated landscape samples published in the project repository.",
+          "source_url": "https://raw.githubusercontent.com/Amjuks/Scenery-Image-Generation-GAN/master/scenery_gan/assets/5x5_1.png",
+          "source_label": "Repository image",
+          "captured_at": "2026-09-24",
+          "origin": "source-preview",
+          "fit": "contain",
+          "position": "center",
+          "background": "theme"
+        }
+      ],
+      "links": {},
+      "preview_sources": [
+        {
+          "kind": "image",
+          "url": "https://raw.githubusercontent.com/Amjuks/Scenery-Image-Generation-GAN/master/scenery_gan/assets/5x5_1.png",
+          "label": "Repository image",
+          "alt": "Grid of landscape images generated by the Scenery Generation GAN",
+          "caption": "Generated landscape samples published in the project repository."
+        },
+        {
+          "kind": "github",
+          "url": "https://github.com/Amjuks/Scenery-Image-Generation-GAN",
+          "label": "GitHub repository",
+          "alt": "GitHub preview for Scenery Image Generation GAN",
+          "caption": "Repository preview supplied by GitHub."
+        }
+      ]
+    },
+    {
+      "name": "Maze Runner",
+      "description": "Autonomous maze-solving robot built for a robotics competition.",
+      "link": "",
+      "year": 2024,
+      "tags": [
+        "Robotics",
+        "Embedded Systems"
+      ],
+      "recognition": "1st Place, Maze-Solving Robotics Competition, BMS College of Engineering",
+      "presentation": "auto",
+      "media": [
+        {
+          "type": "image",
+          "src": "projects/maze-runner-robot/maze_robot.jpg",
+          "alt": "Autonomous Maze Runner robot",
+          "caption": "The autonomous maze-solving robot developed for the robotics competition.",
+          "fit": "contain"
+        },
+        {
+          "type": "image",
+          "src": "projects/maze-runner-robot/maze_certificate.jpg",
+          "alt": "Certificate awarded for the Maze Runner robotics competition",
+          "caption": "Competition certificate recognizing the team's achievement in the Maze Runner robotics competition.",
+          "fit": "contain"
+        }
+      ],
+      "links": {}
+    },
+    {
+      "name": "Handwritten Digit Classifier & Generator",
+      "description": "CNN handwritten-digit classifier combined with a GAN for synthetic image generation.",
+      "link": "",
+      "year": 2024,
+      "tags": [
+        "CNN",
+        "GAN",
+        "Python"
+      ],
+      "presentation": "auto",
+      "media": [
+        {
+          "type": "image",
+          "src": "projects/handwritten-digits/num_analyze.png",
+          "alt": "Handwritten digit being analyzed by the CNN classifier",
+          "caption": "Interactive demonstration of the CNN analyzing a handwritten digit and identifying the predicted number.",
+          "fit": "cover"
+        },
+        {
+          "type": "image",
+          "src": "projects/handwritten-digits/num_gen.png",
+          "alt": "GAN-generated handwritten digits",
+          "caption": "Synthetic handwritten digits generated by the GAN to resemble human-written numbers.",
+          "fit": "contain"
+        },
+        {
+          "type": "image",
+          "src": "projects/handwritten-digits/num_vis.png",
+          "alt": "Visualization of handwritten digit classification",
+          "caption": "Visualization showing how the model interprets visual features to identify a handwritten digit.",
+          "fit": "contain"
+        }
+      ],
+      "links": {
+        "github": "https://github.com/Amjuks/Handwritten-Digit-Recognition-and-Generation"
+      }
+    },
+    {
+      "name": "3D Self-Healing Compound Simulation",
+      "description": "Probabilistic 3D simulation of a grid-based material repairing localized damage.",
+      "link": "https://amjuks.github.io/3D-Self-Healing-Compound-Simulation/",
+      "year": 2025,
+      "tags": [
+        "Simulation",
+        "Python",
+        "Probabilistic Algorithms"
+      ],
+      "presentation": "auto",
+      "media": [
+        {
+          "type": "image",
+          "src": "projects/self-heal-compound/heal_1.png",
+          "alt": "Initial state of the simulated self-healing compound",
+          "caption": "Initial state of the 3D grid-based compound before localized damage and healing.",
+          "fit": "contain"
+        },
+        {
+          "type": "image",
+          "src": "projects/self-heal-compound/heal_2.png",
+          "alt": "Self-healing compound simulation",
+          "caption": "3D simulation showing the compound undergoing probabilistic self-healing after localized damage.",
+          "fit": "contain"
+        }
+      ],
+      "links": {
+        "github": "https://github.com/Amjuks/3D-Self-Healing-Compound-Simulation",
+        "live_demo": "https://amjuks.github.io/3D-Self-Healing-Compound-Simulation/"
+      }
+    },
+    {
+      "name": "Novel-Writing Tool",
+      "description": "Writing-management tool for organizing novels, chapters, characters, and story arcs.",
+      "link": "",
+      "year": 2024,
+      "tags": [
+        "Web Development"
+      ],
+      "presentation": "auto",
+      "media": [],
+      "links": {
+        "youtube": "https://www.youtube.com/watch?v=3HjuevpsJmM",
+        "github": "https://github.com/Amjuks/CS50-Web-Development/tree/master/Final%20Project/storyforge"
+      }
+    },
+    {
+      "name": "Landing Pages & Custom Tools",
+      "description": "Freelance websites and custom software tools delivered for different requirements.",
+      "link": "",
+      "year": 2022,
+      "tags": [
+        "Web Development",
+        "Freelance"
+      ],
+      "presentation": "auto",
+      "media": [],
+      "links": {}
+    },
+    {
+      "name": "Pokémon Info App",
+      "description": "Interactive frontend for browsing, searching, and filtering Pokémon data.",
+      "link": "",
+      "year": 2020,
+      "tags": [
+        "Web Development",
+        "APIs"
+      ],
+      "presentation": "auto",
+      "media": [],
+      "links": {
+        "youtube": "https://www.youtube.com/watch?v=19_u2v3y2vk",
+        "github": "https://github.com/Amjuks/CS50s-Introduction-to-Computer-Science/tree/master/Week%209%20-%20Final%20Project"
+      }
+    },
+    {
+      "name": "Social Media Bots",
+      "description": "Python automation bots for messaging, posting, and data extraction across platforms such as Reddit and Discord.",
+      "link": "",
+      "year": 2020,
+      "tags": [
+        "Python",
+        "APIs",
+        "Automation"
+      ],
+      "presentation": "auto",
+      "media": [],
+      "links": {}
+    },
+    {
+      "name": "Sentiment Analysis Tool",
+      "description": "NLP classifier that analyzes and categorizes sentiment in user-provided text.",
+      "link": "",
+      "year": 2020,
+      "tags": [
+        "NLP",
+        "Machine Learning"
+      ],
+      "presentation": "auto",
+      "media": [],
+      "links": {}
+    }
+  ],
+  "experimental_and_older_projects": [
+    "Particle Life Simulation",
+    "3D Self-Healing Compound Simulation",
+    "Scenery Generation GAN",
+    "Image Classifier & Generator",
+    "Social Media Bots",
+    "Novel-Writing Tool",
+    "Pokémon Info App"
+  ],
+  "deemphasize": [
+    "Basic sentiment analysis",
+    "Generic static websites",
+    "Generic landing pages",
+    "Basic image classifier",
+    "Social media automation bots"
+  ],
+  "achievements": [
+    {
+      "title": "Winner, College-wide Researchathon",
+      "event": "Researchathon",
+      "result": "Winner",
+      "project": "Skin Lesion Classification",
+      "year": 2025,
+      "description": "Won a college-wide research competition with a skin-lesion classification project."
+    },
+    {
+      "title": "1st Place, Maze-Solving Robotics Competition",
+      "event": "Maze-Solving Robotics Competition",
+      "result": "1st Place",
+      "organization": "BMS College of Engineering",
+      "year": 2024,
+      "project": "Maze Runner",
+      "description": "Built a robot capable of autonomously navigating a maze as part of a 2-day competition."
+    },
+    {
+      "title": "Chess.com Puzzle Rank",
+      "event": "Chess.com",
+      "result": "Top 10%",
+      "year": null,
+      "description": "Chess puzzle performance ranked within the top 10%."
+    }
+  ],
+  "research_and_publications": [
+    {
+      "title": "Particle Life: Simulating the Emergence of Order from Chaos",
+      "type": "Technical Article",
+      "platform": "Medium",
+      "date": "2025-02",
+      "link": "https://medium.com/@aman.jukaku/particle-life-simulating-the-emergence-of-order-from-chaos-e006dbcc574a",
+      "description": "Technical article discussing particle interactions, emergent structures, simulation mechanics, and computational exploration."
+    }
+  ],
+  "certifications": [
+    {
+      "credential": "CS50x - Introduction to Computer Science",
+      "issuer": "Harvard University",
+      "date": "2020",
+      "credential_id": "",
+      "verification_url": "https://cs50.harvard.edu/certificates/abe40da1-7bc8-4535-8746-5ba90797760c",
+      "file": "certificates/cs50x.png"
+    },
+    {
+      "credential": "CS50AI - Introduction to Artificial Intelligence with Python",
+      "issuer": "Harvard University",
+      "date": "2023",
+      "credential_id": "",
+      "verification_url": "https://cs50.harvard.edu/certificates/acca82e5-8b15-4f7e-b9b6-7090bd969ce5",
+      "file": "certificates/cs50ai.png"
+    },
+    {
+      "credential": "CS50W - Web Programming with Python and JavaScript",
+      "issuer": "Harvard University",
+      "date": "2025",
+      "credential_id": "",
+      "verification_url": "https://certificates.cs50.io/2a830717-b825-4374-9ff7-9b3c2cab1612",
+      "file": "certificates/cs50w.png"
+    },
+    {
+      "credential": "Google Cloud Study Jams 2025",
+      "issuer": "GDG RVCE",
+      "date": "2025",
+      "credential_id": "",
+      "verification_url": "",
+      "file": "certificates/google_study_jams.png"
+    }
+  ],
+  "communities_and_extracurriculars": [
+    {
+      "organization": "Google Developer Groups - RVCE Campus Chapter",
+      "role": "Member",
+      "start_date": "",
+      "end_date": null,
+      "contributions": [
+        "Member of the campus GDG community",
+        "Associated with Google Cloud Study Jams 2025"
+      ],
+      "leadership": false,
+      "link": ""
+    }
+  ],
+  "current_work": [
+    {
+      "name": "Soket AI Internship",
+      "status": "ongoing",
+      "description": "AI-agent-driven 3D scene generation, game-tool ecosystem development, and synthetic interaction-data generation."
+    },
+    {
+      "name": "LLM / Synthetic Data Workflows",
+      "status": "ongoing",
+      "description": "Exploring scalable synthetic data generation and variation for puzzle/game interaction datasets."
+    }
+  ],
+  "personal_interests": [
+    "Chess",
+    "Photography",
+    "Art",
+    "Financial Markets",
+    "Crypto",
+    "Cycling",
+    "Swimming",
+    "Paragliding"
+  ],
+  "career_direction": {
+    "long_term_focus": [
+      "AI Systems",
+      "Software Engineering",
+      "Generative AI",
+      "LLM Systems",
+      "AI Agents",
+      "AI Infrastructure",
+      "Data Engineering for AI",
+      "Computer Vision",
+      "Robotics",
+      "Simulation",
+      "Applied AI Research"
+    ],
+    "problems_of_interest": [
+      "Building intelligent systems that interact with real environments",
+      "AI agents and tool-use systems",
+      "Large-scale AI data infrastructure",
+      "Computer vision and robotics",
+      "Simulation and computational systems",
+      "AI products that can be deployed and used by real people"
+    ],
+    "preferred_work_environment": "",
+    "companies_or_industries_of_interest": []
+  },
+  "portfolio_assets": {
+    "resume": {
+      "latest_file": "Mohammed_Aman_Jukaku_FlowCV_Resume_2026-09-22 (2).pdf",
+      "path": "",
+      "notes": "Latest resume available in project files."
+    },
+    "profile_photo": {
+      "available": true,
+      "path_or_url": "profile/aman.jpg",
+      "notes": "",
+      "alt": "Portrait of Mohammed Aman Jukaku",
+      "position": "50% 50%"
+    },
+    "project_screenshots": [],
+    "demo_videos": [],
+    "hardware_photos": [],
+    "certificates": [],
+    "competition_photos": [],
+    "diagrams": [],
+    "other_media": []
+  },
+  "portfolio_sections": {
+    "recommended_order": [
+      "Hero",
+      "Selected Work",
+      "Experience",
+      "Technical Skills",
+      "Achievements",
+      "Research & Writing",
+      "Education",
+      "Experiments / Archive",
+      "About / Interests",
+      "Contact"
+    ],
+    "hero": {
+      "name": "Mohammed Aman Jukaku",
+      "title": "AI & Software Engineer",
+      "tagline": "I build intelligent systems across LLMs, machine learning, data engineering, computer vision, robotics, and simulation.",
+      "primary_cta": "View Projects",
+      "secondary_cta": "Contact Me"
+    },
+    "selected_work": {
+      "featured_project_count": 7,
+      "project_order": [
+        "Transformer Language Model From Scratch",
+        "Decentralized Multimodal Biometric Identity System",
+        "AI Smart Surveillance Robot",
+        "Global Compass - Interactive 3D News Exploration Platform",
+        "Skin Lesion Classification",
+        "Particle Life Simulation",
+        "BumpYourServer"
+      ]
+    }
+  },
+  "open_fields_to_fill": {
+    "profile": [
+      "profile.short_bio",
+      "profile_assets.profile_photo",
+      "resume_download_url"
+    ],
+    "contact": [
+      "contact.hugging_face",
+      "contact.other_profiles"
+    ],
+    "education": [
+      "education[].expected_graduation_exact_date",
+      "education[].relevant_coursework",
+      "education[].academic_achievements"
+    ],
+    "opportunities": [
+      "opportunities.remote_or_onsite_preference",
+      "opportunities.target_locations",
+      "opportunities.target_companies"
+    ],
+    "experience": [
+      "experience[].exact_metrics",
+      "experience[].team_size",
+      "experience[].additional_tools",
+      "experience[].public_links",
+      "experience[].additional_results"
+    ],
+    "projects": [
+      "featured_projects[].live_demo",
+      "featured_projects[].video",
+      "featured_projects[].article",
+      "featured_projects[].paper",
+      "featured_projects[].media",
+      "featured_projects[].additional_metrics",
+      "project_archive[].link"
+    ],
+    "achievements": [
+      "achievements[].event_date",
+      "achievements[].verification_link",
+      "achievements[].certificate",
+      "achievements[].photo"
+    ],
+    "certifications": [
+      "certifications[].date",
+      "certifications[].credential_id",
+      "certifications[].verification_url"
+    ],
+    "communities": [
+      "communities_and_extracurriculars[].exact_role",
+      "communities_and_extracurriculars[].dates",
+      "communities_and_extracurriculars[].events_organized",
+      "communities_and_extracurriculars[].leadership_contributions"
+    ],
+    "assets": [
+      "portfolio_assets.profile_photo",
+      "portfolio_assets.project_screenshots",
+      "portfolio_assets.demo_videos",
+      "portfolio_assets.hardware_photos",
+      "portfolio_assets.certificates",
+      "portfolio_assets.competition_photos",
+      "portfolio_assets.diagrams"
+    ],
+    "miscellaneous": [
+      "additional_projects",
+      "additional_publications",
+      "open_source_contributions",
+      "patents",
+      "research_experiences",
+      "future_projects",
+      "testimonials"
+    ]
+  },
+  "additional_information": {
+    "awards_and_recognition": [],
+    "open_source_contributions": [],
+    "datasets": [],
+    "models": [],
+    "patents": [],
+    "research_experiences": [],
+    "technical_writing": [],
+    "future_projects": [],
+    "testimonials": [],
+    "other_links": [],
+    "notes": []
+  },
+  "content_guidelines": {
+    "public_confidentiality": "Keep proprietary internship details generalized. Do not expose private datasets, prompts, internal architectures, source code, infrastructure, or confidential company information.",
+    "portfolio_positioning": "Emphasize technical depth, measurable results, scale, deployed systems, and cross-domain engineering.",
+    "featured_project_strategy": "Use the seven featured projects as the primary portfolio showcase and keep basic/generic projects in the archive.",
+    "avoid_inventing": "Do not invent leadership roles, metrics, certifications, links, or achievements. Empty fields are intentional placeholders.",
+    "personal_brand": "The portfolio should communicate that the user builds complete intelligent systems, not only isolated ML models."
+  }
+}
