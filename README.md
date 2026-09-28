@@ -72,7 +72,7 @@ Categories are inferred from project category, technologies, and archive tags in
 
 ## GitHub Pages
 
-Push to `main` and set **Settings → Pages → Source → GitHub Actions**. `.github/workflows/deploy.yml` builds and deploys the static site. The Pages action supplies `SITE_URL` and `BASE_PATH`, supporting both a user site and repository site. No deployment has been performed from this workspace.
+Push to `master` and set **Settings → Pages → Source → GitHub Actions**. `.github/workflows/deploy.yml` builds and deploys the static site. The Pages action supplies `SITE_URL` and `BASE_PATH`, supporting both a user site and repository site. No deployment has been performed from this workspace.
 
 Override locally in PowerShell if needed:
 
