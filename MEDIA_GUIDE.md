@@ -1,115 +1,66 @@
-# Adding your photos, project evidence, and certificates
+# Managing portfolio content
 
-This is a static site: **copy files into `public/` and reference them in `portfolio_data.json`**. There is no upload dashboard. Commit the files and JSON together when publishing. Paths in the JSON omit `public/` and the `/Portfolio/` prefix; deployment paths are handled automatically.
+Edit `portfolio_data.json`. Copy files into `public/` and reference paths without the `public/` prefix. There is no upload dashboard.
 
-## 1. Profile picture
+## Project details
 
-Place your photo at **`public/profile/aman.webp`** (JPG or PNG works too). A clear portrait around 800×1000 pixels is suitable. It appears beside your introduction on desktop and below the introduction on mobile, without replacing the typography.
+Both `featured_projects` and `project_archive` accept the same fields: `name`, `slug`, `year`, `status`, `category`, `one_line_purpose`, `description`, `personally_built`, `technologies`, `metrics`, `technical_highlight`, `recognition`, `links`, and `media`.
 
-Update the existing `portfolio_assets.profile_photo` object:
+Older archive entries continue to work: `tags` supplies missing technologies/category, `link` joins the resource links, and a slug is derived when absent. Recognition can be a string or an array. Add genuine details to the JSON; omitted details are not invented.
 
-```json
-{
-  "available": true,
-  "path_or_url": "profile/aman.webp",
-  "alt": "Portrait of Mohammed Aman Jukaku",
-  "position": "50% 35%",
-  "notes": ""
-}
-```
+## Archive order and categories
 
-`position` controls the crop: increase the second percentage to move the crop lower. Keep `available: false` until the actual file exists. The layout remains intentional without a photo; no empty frame is shown.
+`portfolio_sections.archive.project_order` controls All. Each entry in `archive.categories` has `id`, `label`, and `project_order`. Category array order controls tabs; each category's project list controls membership and display order. Use exact project names. Multiple selections combine categories in tab order without duplicates.
 
-## 2. Project screenshots and uploaded videos
+Featured ordering remains under `portfolio_sections.selected_work.project_order`. Unlisted projects follow in source order. Invalid category IDs, unknown project names, and duplicate references fail the build.
 
-Create a folder per project, for example:
+## Project media
 
-```text
-public/projects/global-compass/
-  cover.webp
-  regional-summary.webp
-  walkthrough.mp4
-  video-poster.webp
-```
-
-Set that project's `media` array:
-
-```json
-[
-  {
-    "type": "image",
-    "src": "projects/global-compass/cover.webp",
-    "alt": "Global Compass globe showing regional news",
-    "caption": "The main news exploration interface."
-  },
-  {
-    "type": "image",
-    "src": "projects/global-compass/regional-summary.webp",
-    "alt": "An AI-generated regional news summary",
-    "caption": "Regional summaries alongside source articles."
-  },
-  {
-    "type": "video",
-    "src": "projects/global-compass/walkthrough.mp4",
-    "poster": "projects/global-compass/video-poster.webp",
-    "alt": "Global Compass product walkthrough",
-    "caption": "A short walkthrough of the core interaction."
-  }
-]
-```
-
-These are format examples; use descriptions that match your actual files. The first image (or video with a poster) becomes the project cover. All media appears in the project drawer. Images open at full size in another tab; uploaded videos use native playback controls and never autoplay. `type` can be omitted for images. `caption` and `poster` are optional.
-
-For screenshots, export WebP around 1200–1600 pixels wide. The showcase crops to 16:10, while the detail gallery preserves the full image. This lets tall screenshots and hardware photos remain readable. Keep longer videos on YouTube to avoid putting large video files in the repository.
-
-## 3. Live websites, GitHub, Kaggle, YouTube, and other resources
-
-Use the existing `links` object on the project. No screenshots are required:
+The first image or video poster in `media` becomes the cover. Images open in an on-page viewer. Entries look like:
 
 ```json
 {
-  "github": "https://github.com/Amjuks/LLM-Experimental",
-  "live_demo": "",
-  "kaggle": "",
-  "video": "",
-  "paper": "",
-  "article": "",
-  "other": []
+  "type": "image",
+  "src": "projects/example/screenshot.png",
+  "alt": "Description of the real screenshot",
+  "caption": "Optional caption",
+  "fit": "contain",
+  "position": "top left",
+  "background": "theme"
 }
 ```
 
-Paste the full live-site address into `live_demo`, Kaggle address into `kaggle`, and a YouTube watch/share URL into `video`. YouTube appears as a **Watch demo** resource card and opens on YouTube; it does not preload an embedded player. GitHub and Kaggle receive platform-labelled source/notebook cards. Resources appear immediately beneath the project cover in the detail view.
+- `fit`: `contain` (default, entire image) or `cover` (fills frame, may crop).
+- `position`: center, top, bottom, left, right, any corner such as top left, or percentages such as 50% 20%.
+- `background`: theme, light, or dark.
+- Enlarged images always show the whole image.
 
-Multiple repositories are supported: set `github` to an array of URLs. For a slide deck, report, dataset, or another resource, use a named entry in `other`:
+Use `links.github`, `links.kaggle`, `links.live_demo`, `links.video`, `links.paper`, or `links.article`. Named extra resources belong in `links.other`. GitHub supports an array of URLs.
 
-```json
-{ "label": "View presentation", "url": "https://example.com/your-presentation" }
-```
+YouTube URLs in `links.video` become click-to-play embedded players. Uploaded videos use `type: "video"`, `src`, `alt`, and optional `poster`. Real images are shown when available; otherwise projects use text summaries. The legacy `presentation` field does not enable invented illustrations.
 
-The same `media`, `links`, and `presentation` fields work on `project_archive` entries. Their existing single `link` field still works.
+Builds generate smaller WebP previews for larger PNG/JPEG images while preserving originals for enlargement. Animated GIFs remain unchanged. Source images and JSON are not modified.
 
-### Choose the presentation
+## Certificates and profile photo
 
-Each project has a `presentation` field:
+Upload certificate images to `public/certificates/` and set each `certifications[].file`, for example `certificates/cs50x.png`. Array order controls the list. The viewer shows one full image at a time with selection, previous/next, and enlargement. Issuer verification links remain secondary.
 
-| Value | Result |
-| --- | --- |
-| `auto` | Use real media first; otherwise show a GitHub/Kaggle or other resource card; use an illustration only when no evidence link exists. |
-| `links` | Lead with the repository/notebook/resource card even if screenshots exist. Screenshots remain available in the drawer. |
-| `diagram` | Use the technical illustration when there is no uploaded cover. Evidence links still appear in the drawer. |
+For a PDF, keep `file` pointing to the PDF and add `preview` pointing to a PNG/WebP image. Use `verification_url` for the issuer page.
 
-Leave it as `auto` for most projects. Nothing invents repository stars, notebook scores, or results, and no remote metadata fetch is required.
+Profile photos use `portfolio_assets.profile_photo`: set `available: true`, `path_or_url`, `alt`, and `position` such as 50% 35%.
 
-## 4. Certificate images or PDFs
+## Recognition
 
-Place files in **`public/certificates/`**, for example `cs50x.pdf` or `cs50x.webp`. Find the corresponding object under `certifications` and set:
+`portfolio_sections.recognition.career` and `.personal` contain ordered references:
 
 ```json
-"file": "certificates/cs50x.pdf"
+{"source":"achievement","name":"Exact achievement title"}
 ```
 
-That row gains a **View certificate** link, opening the original document in a new tab. Use `verification_url` for the issuer's verification page; this produces a separate **Verify credential** link. Either can exist independently. Certificate rows stay compact, so credentials support rather than dominate your work.
+Sources: `achievement` matches an achievements title, `publication` matches a research_and_publications title, and `interest` matches personal_interests. Interests are labelled as interests rather than awards.
 
-## Preview
+## Preview and publish
 
-Run `npm run dev` and open `http://localhost:4321/Portfolio/`. Changes to the data and assets update the preview. Run `npm run build` before publishing.
+Run `npm run dev` for live editing. Run `npm run build` then `npm run preview` for production output. Both use http://localhost:4321/Portfolio/. Stop an existing server before launching another.
+
+Publishing instructions: [DEPLOYMENT.md](DEPLOYMENT.md). Local edits must be committed and pushed to master; a successful GitHub Actions deployment updates the public page.

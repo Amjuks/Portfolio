@@ -328,6 +328,7 @@ const mediaDialog = $<HTMLDialogElement>(".media-dialog");
 let mediaLinks: HTMLAnchorElement[] = [];
 let mediaIndex = 0;
 let mediaOpener: HTMLElement | null = null;
+let mediaPageY: number | null = null;
 function showImage(index: number) {
   mediaIndex = (index + mediaLinks.length) % mediaLinks.length;
   const link = mediaLinks[mediaIndex],
@@ -343,6 +344,13 @@ function showImage(index: number) {
 function closeMedia() {
   if (!mediaDialog.open) return;
   mediaDialog.close();
+  if (mediaPageY !== null) {
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.width = "";
+    window.scrollTo({ top: mediaPageY, behavior: "instant" });
+    mediaPageY = null;
+  }
   $<HTMLImageElement>(".media-viewer-image img").removeAttribute("src");
   mediaOpener?.focus({ preventScroll: true });
 }
@@ -364,6 +372,12 @@ document.addEventListener("click", (event) => {
     );
     mediaOpener = link;
     showImage(mediaLinks.indexOf(link));
+    if (!dialog.open) {
+      mediaPageY = window.scrollY;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${mediaPageY}px`;
+      document.body.style.width = "100%";
+    }
     mediaDialog.showModal();
     $(".media-close").focus();
   }
@@ -455,9 +469,34 @@ archiveRows.forEach((row) => {
   row.addEventListener("focus", () => setPreview(row.dataset.project!));
 });
 function applyFilters(updateUrl = false) {
+  const orderedSlugs = selected.size
+    ? [
+        ...new Set(
+          filterButtons
+            .filter((b) => selected.has(b.dataset.filter!))
+            .flatMap(
+              (b) => JSON.parse(b.dataset.projectOrder || "[]") as string[],
+            ),
+        ),
+      ]
+    : archiveRows.map((row) => row.dataset.project!);
+  const rank = (row: HTMLAnchorElement) => {
+    const i = orderedSlugs.indexOf(row.dataset.project!);
+    return i < 0 ? Infinity : i;
+  };
+  const orderedRows = [...archiveRows].sort((a, b) => rank(a) - rank(b));
+  const list = $(".archive-list"),
+    empty = $(".empty-results");
+  const focused =
+    document.activeElement instanceof HTMLElement &&
+    list.contains(document.activeElement)
+      ? document.activeElement
+      : null;
+  orderedRows.forEach((row) => list.insertBefore(row, empty));
+  focused?.focus({ preventScroll: true });
   let count = 0;
   let first = "";
-  archiveRows.forEach((row) => {
+  orderedRows.forEach((row) => {
     const matches =
       !selected.size ||
       [...selected].some((c) => row.dataset.categories!.split(",").includes(c));
@@ -534,3 +573,31 @@ window.addEventListener("hashchange", syncUrl);
 root.classList.add("js");
 syncUrl();
 scrollFrame();
+
+const certificateButtons = $$<HTMLButtonElement>("[data-certificate-index]");
+const certificatePanels = $$<HTMLElement>(".certificate-panel");
+let certificateIndex = 0;
+function selectCertificate(index: number) {
+  if (!certificateButtons.length) return;
+  certificateIndex =
+    (index + certificateButtons.length) % certificateButtons.length;
+  certificateButtons.forEach((button, i) =>
+    button.setAttribute("aria-pressed", String(i === certificateIndex)),
+  );
+  certificatePanels.forEach(
+    (panel, i) => (panel.hidden = i !== certificateIndex),
+  );
+  $(".certificate-count").textContent =
+    String(certificateIndex + 1).padStart(2, "0") +
+    " / " +
+    String(certificateButtons.length).padStart(2, "0");
+}
+certificateButtons.forEach((button, i) =>
+  button.addEventListener("click", () => selectCertificate(i)),
+);
+document
+  .querySelector(".certificate-previous")
+  ?.addEventListener("click", () => selectCertificate(certificateIndex - 1));
+document
+  .querySelector(".certificate-next")
+  ?.addEventListener("click", () => selectCertificate(certificateIndex + 1));

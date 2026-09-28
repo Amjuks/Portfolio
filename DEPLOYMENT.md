@@ -59,7 +59,7 @@ No personal access token, API key, or deployment secret is required by the workf
 
 Open [Actions](https://github.com/Amjuks/Portfolio/actions), then **Deploy portfolio to GitHub Pages**.
 
-The workflow installs locked dependencies, builds the static site, uploads `dist/`, and deploys it. Run the local tests before pushing. A failed build prevents deployment.
+The workflow installs locked dependencies, builds the site, optimizes image previews, runs browser tests against production output, uploads `dist/`, and deploys it. A failed build or test prevents deployment.
 
 After both jobs succeed, open https://amjuks.github.io/Portfolio/. You can also rerun from **Actions → Deploy portfolio to GitHub Pages → Run workflow → master**.
 

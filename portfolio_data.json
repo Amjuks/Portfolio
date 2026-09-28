@@ -793,7 +793,7 @@
       "media": [
         {
           "type": "image",
-          "src": "public/projects/bump-your-server/bys_web.png",
+          "src": "projects/bump-your-server/bys_web.png",
           "alt": "Bump Your Server Discord bot homepage",
           "caption": "Homepage of Bump Your Server, a Discord bot for server promotion, moderation, configuration, and cross-server communication.",
           "source_label": "BYS Homepage",
@@ -801,21 +801,21 @@
         },
         {
           "type": "image",
-          "src": "public/projects/bump-your-server/bys_discover.png",
+          "src": "projects/bump-your-server/bys_discover.png",
           "alt": "Bump Your Server discovery page",
           "caption": "Discovery page for browsing and discovering Discord servers through Bump Your Server.",
           "fit": "cover"
         },
         {
           "type": "image",
-          "src": "public/projects/bump-your-server/bys_ads.png",
+          "src": "projects/bump-your-server/bys_ads.png",
           "alt": "Bump Your Server server advertising page",
           "caption": "Server advertising interface showing promoted Discord servers on Bump Your Server.",
           "fit": "cover"
         },
         {
           "type": "image",
-          "src": "public/projects/bump-your-server/bys_global.png",
+          "src": "projects/bump-your-server/bys_global.png",
           "alt": "Bump Your Server global chat in action",
           "caption": "Global chat in action, demonstrating cross-server communication through Bump Your Server.",
           "position": "left",
@@ -823,7 +823,7 @@
         },
         {
           "type": "image",
-          "src": "public/projects/bump-your-server/bys_bumps.png",
+          "src": "projects/bump-your-server/bys_bumps.png",
           "alt": "Bump Your Server advertisements displayed in Discord",
           "caption": "Server advertisements being displayed and promoted directly within Discord.",
           "fit": "cover"
@@ -1248,6 +1248,141 @@
         "Skin Lesion Classification",
         "Particle Life Simulation",
         "BumpYourServer"
+      ]
+    },
+    "archive": {
+      "project_order": [
+        "Transformer Language Model From Scratch",
+        "Decentralized Multimodal Biometric Identity System",
+        "AI Smart Surveillance Robot",
+        "Global Compass - Interactive 3D News Exploration Platform",
+        "Skin Lesion Classification",
+        "Particle Life Simulation",
+        "BumpYourServer",
+        "Scenery Generation GAN",
+        "Maze Runner",
+        "Handwritten Digit Classifier & Generator",
+        "3D Self-Healing Compound Simulation",
+        "Novel-Writing Tool",
+        "Landing Pages & Custom Tools",
+        "Pokémon Info App",
+        "Social Media Bots",
+        "Sentiment Analysis Tool"
+      ],
+      "categories": [
+        {
+          "id": "AI",
+          "label": "AI",
+          "project_order": [
+            "Transformer Language Model From Scratch",
+            "Skin Lesion Classification",
+            "Decentralized Multimodal Biometric Identity System",
+            "AI Smart Surveillance Robot",
+            "Global Compass - Interactive 3D News Exploration Platform",
+            "Scenery Generation GAN",
+            "Handwritten Digit Classifier & Generator",
+            "Sentiment Analysis Tool"
+          ]
+        },
+        {
+          "id": "Data",
+          "label": "Data",
+          "project_order": [
+            "Transformer Language Model From Scratch",
+            "Scenery Generation GAN",
+            "Skin Lesion Classification"
+          ]
+        },
+        {
+          "id": "Systems",
+          "label": "Systems",
+          "project_order": [
+            "BumpYourServer",
+            "Decentralized Multimodal Biometric Identity System",
+            "AI Smart Surveillance Robot",
+            "Particle Life Simulation",
+            "3D Self-Healing Compound Simulation"
+          ]
+        },
+        {
+          "id": "Web",
+          "label": "Web",
+          "project_order": [
+            "Global Compass - Interactive 3D News Exploration Platform",
+            "Novel-Writing Tool",
+            "Pokémon Info App",
+            "Landing Pages & Custom Tools"
+          ]
+        },
+        {
+          "id": "Bots",
+          "label": "Bots",
+          "project_order": [
+            "BumpYourServer",
+            "Social Media Bots"
+          ]
+        },
+        {
+          "id": "Robotics",
+          "label": "Robotics",
+          "project_order": [
+            "AI Smart Surveillance Robot",
+            "Maze Runner"
+          ]
+        },
+        {
+          "id": "Research",
+          "label": "Research",
+          "project_order": [
+            "Skin Lesion Classification",
+            "Transformer Language Model From Scratch",
+            "Particle Life Simulation",
+            "Scenery Generation GAN",
+            "3D Self-Healing Compound Simulation"
+          ]
+        },
+        {
+          "id": "Early",
+          "label": "Early",
+          "project_order": [
+            "Novel-Writing Tool",
+            "Pokémon Info App",
+            "Handwritten Digit Classifier & Generator",
+            "Sentiment Analysis Tool",
+            "Social Media Bots",
+            "Landing Pages & Custom Tools"
+          ]
+        }
+      ]
+    },
+    "recognition": {
+      "career": [
+        {
+          "source": "achievement",
+          "name": "Winner, College-wide Researchathon"
+        },
+        {
+          "source": "achievement",
+          "name": "1st Place, Maze-Solving Robotics Competition"
+        },
+        {
+          "source": "publication",
+          "name": "Particle Life: Simulating the Emergence of Order from Chaos"
+        }
+      ],
+      "personal": [
+        {
+          "source": "achievement",
+          "name": "Chess.com Puzzle Rank"
+        },
+        {
+          "source": "interest",
+          "name": "Paragliding"
+        },
+        {
+          "source": "interest",
+          "name": "Photography"
+        }
       ]
     }
   },

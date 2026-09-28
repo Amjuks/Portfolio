@@ -1,102 +1,100 @@
 import data from "../../portfolio_data.json";
+import { normalizeProject, type ProjectInput } from "./project";
 export { data };
-import { normalizeLinks, projectMedia, type Media } from "./media";
-export const slugify = (s: string) =>
-  s
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-export const categories = [
-  "AI",
-  "Data",
-  "Systems",
-  "Web",
-  "Bots",
-  "Robotics",
-  "Research",
-  "Early",
-];
-export function classify(text: string) {
-  const rules = [
-    /ai|llm|learning|cnn|gan|nlp|transformer|vision/i,
-    /data|pipeline/i,
-    /system|simulation|blockchain|backend/i,
-    /web|frontend|html|javascript|full-stack/i,
-    /bot|automation/i,
-    /robot|embedded|esp32/i,
-    /research|medical|simulation|classification/i,
-    /freelance|landing|sentiment|pokémon|novel|social media|portfolio website/i,
-  ];
-  return categories.filter((_, i) => rules[i].test(text));
-}
-export type Project = {
-  name: string;
-  slug: string;
-  year: number | null;
-  status: string;
-  category: string;
-  summary: string;
-  description: string;
-  built: string[];
-  technologies: string[];
-  metrics: Record<string, string | number>;
-  engineering: string;
-  recognition: string[];
-  links: { label: string; url: string }[];
-  categories: string[];
-  media: Media[];
-  presentation: string;
-};
-const detailed: Project[] = data.featured_projects.map((p) => ({
-  name: p.name,
-  slug: p.slug,
-  year: p.year,
-  status: p.status,
-  category: p.category,
-  summary: p.one_line_purpose,
-  description: p.description,
-  built: p.personally_built,
-  technologies: p.technologies,
-  metrics: Object.fromEntries(
-    Object.entries(p.metrics).filter(([, v]) => v !== undefined),
-  ) as Record<string, string | number>,
-  engineering: p.technical_highlight,
-  recognition: "recognition" in p ? (p.recognition ?? []) : [],
-  links: normalizeLinks(p.links),
-  categories: classify(`${p.category} ${p.technologies.join(" ")}`),
-  media: projectMedia(p.media as Media[], p.links),
-  presentation: p.presentation,
-}));
-const order = (name: string) => {
-  const i = data.portfolio_sections.selected_work.project_order.indexOf(name);
+export type { Project } from "./project";
+export { slugify } from "./project";
+export const archiveCategories = data.portfolio_sections.archive.categories;
+export const categories = archiveCategories.map((c) => c.id);
+const normalize = (p: ProjectInput) =>
+  normalizeProject(
+    p,
+    archiveCategories
+      .filter((c) => c.project_order.includes(p.name))
+      .map((c) => c.id),
+  );
+const detailed = (data.featured_projects as ProjectInput[]).map(normalize);
+const rank = (name: string, order: string[]) => {
+  const i = order.indexOf(name);
   return i < 0 ? Infinity : i;
 };
 export const featured = detailed
   .filter(
-    (p) => data.featured_projects.find((d) => d.slug === p.slug)?.featured,
+    (p) => data.featured_projects.find((d) => d.name === p.name)?.featured,
   )
-  .sort((a, b) => order(a.name) - order(b.name));
-export const projects: Project[] = [
+  .sort(
+    (a, b) =>
+      rank(a.name, data.portfolio_sections.selected_work.project_order) -
+      rank(b.name, data.portfolio_sections.selected_work.project_order),
+  );
+export const projects = [
   ...detailed,
-  ...data.project_archive.map((p) => ({
-    name: p.name,
-    slug: slugify(p.name),
-    year: p.year,
-    status: "",
-    category: p.tags.join(" / "),
-    summary: p.description,
-    description: p.description,
-    built: [],
-    technologies: p.tags,
-    metrics: {},
-    engineering: "",
-    recognition: "recognition" in p && p.recognition ? [p.recognition] : [],
-    links: normalizeLinks({ other: p.link, ...p.links }),
-    categories: classify(`${p.name} ${p.tags.join(" ")}`),
-    media: projectMedia(p.media as Media[], p.links),
-    presentation: p.presentation,
-  })),
-];
+  ...(data.project_archive as ProjectInput[]).map(normalize),
+].sort(
+  (a, b) =>
+    rank(a.name, data.portfolio_sections.archive.project_order) -
+    rank(b.name, data.portfolio_sections.archive.project_order),
+);
+const names = new Set(projects.map((p) => p.name));
+if (
+  names.size !== projects.length ||
+  new Set(projects.map((p) => p.slug)).size !== projects.length
+)
+  throw Error("Project names and slugs must be unique");
+const ids = new Set<string>();
+for (const c of archiveCategories) {
+  if (!c.id || c.id === "All" || c.id.includes(",") || ids.has(c.id))
+    throw Error("Invalid archive category ID: " + c.id);
+  ids.add(c.id);
+}
+for (const order of [
+  data.portfolio_sections.archive.project_order,
+  ...archiveCategories.map((c) => c.project_order),
+]) {
+  if (new Set(order).size !== order.length)
+    throw Error("Duplicate archive project reference");
+  for (const name of order)
+    if (!names.has(name)) throw Error("Unknown archive project: " + name);
+}
+export const archiveOrder = Object.fromEntries(
+  archiveCategories.map((c) => [
+    c.id,
+    c.project_order.map((name) => projects.find((p) => p.name === name)!.slug),
+  ]),
+);
+export function recognitionItems(group: "career" | "personal") {
+  return data.portfolio_sections.recognition[group].map((ref) => {
+    if (ref.source === "achievement") {
+      const a = data.achievements.find((a) => a.title === ref.name);
+      if (a)
+        return {
+          title: a.title,
+          label: String(a.year || a.event),
+          description: a.description,
+          link: "",
+        };
+    }
+    if (ref.source === "publication") {
+      const p = data.research_and_publications.find(
+        (p) => p.title === ref.name,
+      );
+      if (p)
+        return {
+          title: p.title,
+          label: p.type + " · " + p.date.slice(0, 4),
+          description: p.description,
+          link: p.link,
+        };
+    }
+    if (ref.source === "interest" && data.personal_interests.includes(ref.name))
+      return {
+        title: ref.name,
+        label: "Personal interest",
+        description: "",
+        link: "",
+      };
+    throw Error("Unknown recognition reference: " + ref.name);
+  });
+}
 export const date = (value: string | null) =>
   value
     ? new Date(`${value}-01`).toLocaleDateString("en-US", {

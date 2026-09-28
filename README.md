@@ -48,19 +48,19 @@ Add a detailed project to `featured_projects`, following an existing entry:
 | `media` | Array of `{ "src": "projects/example/cover.webp", "alt": "Description" }` |
 | `featured` | Whether to show in the selected-work stage |
 
-Order selected projects using `portfolio_sections.selected_work.project_order`. Unlisted detailed projects appear after the ordered entries. Add smaller projects to `project_archive` using `name`, `description`, `link`, `year`, `tags`, and optional `recognition`.
+Order selected projects using `portfolio_sections.selected_work.project_order`. Unlisted detailed projects appear after the ordered entries. Archive projects support all detailed project fields too, with legacy tags and link as fallbacks. See MEDIA_GUIDE.md.
 
 ### Media
 
 See **[MEDIA_GUIDE.md](MEDIA_GUIDE.md)** for the complete profile-photo, screenshot, video, repository-card, and certificate workflow, including copyable JSON examples.
 
-Place assets under `public/projects/<slug>/`. Provide descriptive alt text. The first image or video poster becomes the cover; the full gallery appears in the drawer with full-size image links and native video playback. Without screenshots, available GitHub/Kaggle links produce repository/notebook covers. Technical illustrations are a final fallback or an explicit choice via `presentation: "diagram"`. All local asset URLs honor the deployment base.
+Place assets under `public/projects/<slug>/`. Provide descriptive alt text. The first image or video poster becomes the cover; the full gallery appears in the drawer with full-size image links and native video playback. Without images, projects use text summaries. Real media supports per-image fit and alignment; images enlarge on-page. Production builds optimize displayed images and preserve originals. All local asset URLs honor the deployment base.
 
 The social image is generated from the JSON using `npm run social`; it is committed as `public/social.png`. Regenerate it after changing the profile name or title.
 
 ### Filtering and project URLs
 
-Categories are inferred from project category, technologies, and archive tags in `classify()` in `src/lib/data.ts`. Edit that mapping to extend the filters. Multiple selected categories use **OR** matching. The URL query preserves selected filters (`?categories=AI,Robotics`). Project drawers use `#project-<slug>`, support direct links and browser history, restore focus and scroll position, and use a native modal dialog for focus containment. Without JavaScript, full case studies remain accessible as normal anchor targets.
+Categories and project ordering are configured explicitly in `portfolio_sections.archive`. Multiple selected categories use **OR** matching. The URL query preserves selected filters (`?categories=AI,Robotics`). Project drawers use `#project-<slug>`, support direct links and browser history, restore focus and scroll position, and use a native modal dialog for focus containment. Without JavaScript, full case studies remain accessible as normal anchor targets.
 
 ## Design and behavior
 

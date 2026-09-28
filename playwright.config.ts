@@ -4,9 +4,9 @@ export default defineConfig({
   fullyParallel: true,
   use: { baseURL: "http://localhost:4321/Portfolio/", headless: true },
   webServer: {
-    command: "npm run dev",
+    command: process.env.TEST_PRODUCTION ? "npm run preview" : "npm run dev",
     url: "http://localhost:4321/Portfolio/",
-    reuseExistingServer: true,
+    reuseExistingServer: !process.env.TEST_PRODUCTION && !process.env.CI,
     timeout: 120000,
   },
   reporter: "list",
