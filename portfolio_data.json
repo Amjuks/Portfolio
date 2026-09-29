@@ -1485,5 +1485,15 @@
         "link_label": ""
       }
     ]
+  },
+  "networking_card": {
+    "name": "Mohammed Aman Jukaku",
+    "title": "AI & Software Engineer",
+    "tagline": "Building intelligent systems across LLMs, machine learning, data engineering, computer vision, robotics, and simulation.",
+    "email": "aman.jukaku@gmail.com",
+    "linkedin": "https://linkedin.com/in/amanjukaku",
+    "github": "https://github.com/Amjuks",
+    "portfolio": "https://amjuks.github.io/Portfolio/",
+    "qr_destination": "https://amjuks.github.io/Portfolio/"
   }
 }

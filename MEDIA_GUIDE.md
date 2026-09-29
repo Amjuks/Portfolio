@@ -87,3 +87,15 @@ The separate research/writing section still uses `research_and_publications`, an
 Run `npm run dev` for live editing. Run `npm run build` then `npm run preview` for production output. Both use http://localhost:4321/Portfolio/. Stop an existing server before launching another.
 
 Publishing instructions: [DEPLOYMENT.md](DEPLOYMENT.md). Local edits must be committed and pushed to master; a successful GitHub Actions deployment updates the public page.
+
+## Networking card
+
+The dedicated page is **/Portfolio/card/** (the /card route under the GitHub Pages base). A link is available in the portfolio's contact area.
+
+Edit only `networking_card` in `portfolio_data.json` to change its name, title, tagline, email, LinkedIn, GitHub, portfolio link, and `qr_destination`. Links use complete HTTPS URLs; displayed addresses automatically omit the protocol and trailing slash.
+
+The page preview and downloadable **2100 × 1200 PNG** come from the same renderer and embedded Geist fonts. The PNG contains only the card and includes 300 DPI metadata. Both assets are generated locally during `npm run build`; no external screenshot service or browser is needed. The actual QR encodes `qr_destination`, which can differ from the shareable card URL.
+
+Download PNG saves the image. Share Card shares the canonical /card/ page URL through the device share sheet when supported, or copies it otherwise. Copy Link copies that same URL. If clipboard access is blocked, the page provides a selectable link.
+
+Rebuild and deploy after changing the configuration. Generated files live under `dist/card/` and should not be committed. The download is suitable for digital sharing and print artwork; print shops may request their own bleed or trim margins.

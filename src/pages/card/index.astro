@@ -1,0 +1,327 @@
+---
+import "@fontsource/geist/latin-400.css";
+import "@fontsource/geist/latin-500.css";
+import "@fontsource/geist/latin-600.css";
+import { createHash } from "node:crypto";
+import {
+  card,
+  cardContacts,
+  CARD_WIDTH,
+  CARD_HEIGHT,
+  contactLayout,
+} from "../../lib/card-data";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const canonical = new URL(`${base}/card/`, Astro.site);
+const version = createHash("sha256")
+  .update(JSON.stringify(card))
+  .digest("hex")
+  .slice(0, 10);
+const png = `${base}/card/card.png?v=${version}`;
+const svg = `${base}/card/card.svg?v=${version}`;
+const filename =
+  card.name.toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-card.png";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0c0d13" />
+    <title>{card.name} — Networking Card</title>
+    <meta name="description" content={card.tagline} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={`${card.name} — ${card.title}`} />
+    <meta property="og:description" content={card.tagline} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(png, Astro.site)} />
+    <meta property="og:image:width" content="2100" />
+    <meta property="og:image:height" content="1200" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <a class="back" href={`${base}/`}>
+          ← Portfolio
+        </a>
+        <h1>Networking card</h1>
+      </header>
+      <figure class="card">
+        <img
+          src={svg}
+          width={CARD_WIDTH}
+          height={CARD_HEIGHT}
+          alt={`${card.name}. ${card.title}. ${card.tagline} QR code links to ${card.qr_destination}`}
+          fetchpriority="high"
+        />
+        <nav class="card-contacts" aria-label="Card contact links">
+          {cardContacts.map((contact, i) => (
+            <a
+              href={contact.href}
+              aria-label={contact.text}
+              style={`left:${(contactLayout.left / CARD_WIDTH) * 100}%;top:${((contactLayout.top + i * contactLayout.height) / CARD_HEIGHT) * 100}%;width:${(contactLayout.width / CARD_WIDTH) * 100}%;height:${(contactLayout.height / CARD_HEIGHT) * 100}%`}
+            >
+              <span class="sr-only">{contact.text}</span>
+            </a>
+          ))}
+        </nav>
+      </figure>
+      <div class="actions" aria-label="Card actions">
+        <a class="action primary" href={png} download={filename}>
+          Download PNG <span aria-hidden="true">↓</span>
+        </a>
+        <button class="action" id="share-card" type="button">
+          Share Card <span aria-hidden="true">↗</span>
+        </button>
+        <button class="action" id="copy-card" type="button">
+          Copy Link <span aria-hidden="true">⧉</span>
+        </button>
+      </div>
+      <p class="status" id="card-status" role="status" aria-live="polite"></p>
+      <div id="copy-fallback" hidden>
+        <label for="card-url">Card link — select and copy</label>
+        <input id="card-url" type="url" readonly value={canonical.href} />
+      </div>
+      <noscript>
+        <p class="no-script">
+          Share this card: <a href={canonical}>{canonical.href}</a>
+        </p>
+      </noscript>
+    </main>
+    <script>
+      const canonical = document.querySelector<HTMLLinkElement>(
+        'link[rel="canonical"]',
+      )!.href;
+      const status = document.querySelector<HTMLElement>("#card-status")!;
+      async function copyLink() {
+        try {
+          await navigator.clipboard.writeText(canonical);
+          document.querySelector<HTMLElement>("#copy-fallback")!.hidden = true;
+          status.textContent = "Card link copied.";
+        } catch {
+          document.querySelector<HTMLElement>("#copy-fallback")!.hidden = false;
+          const input = document.querySelector<HTMLInputElement>("#card-url")!;
+          input.focus();
+          input.select();
+          status.textContent = "Select and copy the card link below.";
+        }
+      }
+      document.querySelector("#copy-card")!.addEventListener("click", copyLink);
+      document
+        .querySelector("#share-card")!
+        .addEventListener("click", async () => {
+          if (!navigator.share) {
+            await copyLink();
+            return;
+          }
+          try {
+            await navigator.share({ title: document.title, url: canonical });
+            status.textContent = "Card shared.";
+          } catch (error) {
+            if (error instanceof Error && error.name === "AbortError") return;
+            await copyLink();
+          }
+        });
+    </script>
+  </body>
+</html>
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+  :global(body) {
+    margin: 0;
+    background: #f3f4f7;
+    color: #171820;
+    font-family: "Geist", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    max-width: 1160px;
+    padding: 48px 40px 64px;
+    margin: 0 auto;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 44px;
+    gap: 24px;
+  }
+  h1 {
+    font-size: 12px;
+    font-weight: 400;
+    color: #666977;
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+  .back {
+    font-size: 13px;
+    color: inherit;
+    text-decoration: none;
+  }
+  .card {
+    position: relative;
+    margin: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+      0 24px 70px #13142321,
+      0 2px 6px #13142314;
+  }
+  .card > img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .card-contacts a {
+    position: absolute;
+    border-radius: 3px;
+  }
+  .card-contacts a:hover {
+    background: #ffffff08;
+  }
+  .card-contacts a:focus-visible {
+    outline: 2px solid #b5afe9;
+    outline-offset: 1px;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+  .action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    min-height: 46px;
+    padding: 0 20px;
+    background: transparent;
+    color: inherit;
+    border: 1px solid #d3d5dd;
+    border-radius: 7px;
+    font:
+      500 12px "Geist",
+      sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .primary {
+    background: #171820;
+    color: #fff;
+    border-color: #171820;
+  }
+  .action:hover {
+    border-color: #777b8c;
+  }
+  :global(a:focus-visible),
+  :global(button:focus-visible),
+  input:focus-visible {
+    outline: 2px solid #6d64ad;
+    outline-offset: 4px;
+  }
+  .status {
+    text-align: center;
+    min-height: 20px;
+    margin-top: 18px;
+    color: #656877;
+    font-size: 12px;
+  }
+  #copy-fallback {
+    max-width: 500px;
+    margin: auto;
+  }
+  #copy-fallback label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  input {
+    width: 100%;
+    padding: 12px;
+    font: inherit;
+    border: 1px solid #d3d5dd;
+    border-radius: 6px;
+  }
+  .no-script {
+    text-align: center;
+    font-size: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :global(body) {
+      background: #08090d;
+      color: #f2f2f6;
+    }
+    h1,
+    .status {
+      color: #a2a5b1;
+    }
+    .action {
+      border-color: #343642;
+    }
+    .primary {
+      background: #e7e7ee;
+      color: #14151d;
+    }
+    input {
+      background: #171820;
+      color: #f2f2f6;
+    }
+  }
+  @media (max-width: 600px) {
+    main {
+      padding: 28px 16px 40px;
+    }
+    header {
+      margin-bottom: 32px;
+    }
+    .card {
+      border-radius: 7px;
+    }
+    .actions {
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .action {
+      padding: 0 12px;
+      gap: 12px;
+      font-size: 11px;
+    }
+  }
+  @media print {
+    main {
+      padding: 0;
+      max-width: none;
+    }
+    header,
+    .actions,
+    .status,
+    #copy-fallback,
+    .no-script {
+      display: none !important;
+    }
+    .card {
+      box-shadow: none;
+      border-radius: 0;
+      width: 7in;
+      height: 4in;
+    }
+  }
+</style>
