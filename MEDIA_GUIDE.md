@@ -78,7 +78,7 @@ All recognition content is defined directly in the top-level `recognition` objec
 }
 ```
 
-Only `title` is required. Blank labels, descriptions, and links are hidden. When a link is supplied without `link_label`, its text defaults to “View details”. Both groups support the same fields. Existing event, year, result, organization, and project metadata is retained directly on the relevant recognition entries; use label/description to choose how it appears.
+Only `title` is required. Blank labels, descriptions, and links are hidden. When a link is supplied without `link_label`, its text defaults to “View details”. Both groups support the same fields. Optional `event`, `result`, `organization`, `project`, `year`, `type`, `platform`, and `date` fields are integrated into the card: dates/type in the eyebrow, event/organization/platform as context, result in the heading or a short emphasis line, and project as a quiet closing line. Values already present in the title or eyebrow are not repeated. Blank or null values are omitted. All values come directly from the recognition entry. If `project` exactly matches a portfolio project name, it opens that project’s detail panel. Unmatched names remain plain text.
 
 The separate research/writing section still uses `research_and_publications`, and the About interest list still uses `personal_interests`. Changing those does not change recognition cards.
 

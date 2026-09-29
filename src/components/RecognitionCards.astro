@@ -1,38 +1,169 @@
 ---
+import { projects } from "../lib/data";
 interface Recognition {
   title: string;
   label?: string;
   description?: string;
   link?: string;
   link_label?: string;
+  event?: string;
+  result?: string;
+  organization?: string;
+  project?: string;
+  year?: number | null;
+  type?: string;
+  platform?: string;
+  date?: string;
 }
 interface Props {
   items: Recognition[];
 }
 const { items } = Astro.props;
+const includes = (text: string, value: string) =>
+  text.toLocaleLowerCase().includes(value.toLocaleLowerCase());
+const unique = (values: (string | undefined)[]) =>
+  values
+    .filter((value): value is string => !!value?.trim())
+    .filter(
+      (value, i, all) =>
+        all.findIndex(
+          (other) => other.toLocaleLowerCase() === value.toLocaleLowerCase(),
+        ) === i,
+    );
+const dateText = (value?: string) => {
+  if (!value) return "";
+  if (/^\d{4}-\d{2}$/.test(value)) {
+    const date = new Date(value + "-01T00:00:00Z");
+    if (!Number.isNaN(date.getTime()))
+      return date.toLocaleDateString("en-US", {
+        month: "short",
+        year: "numeric",
+        timeZone: "UTC",
+      });
+  }
+  return value;
+};
+const metadata = (item: Recognition) => {
+  const date = dateText(item.date);
+  return unique([
+    ...(item.label?.split("·").map((part) => part.trim()) ?? []),
+    item.type,
+    item.year ? String(item.year) : "",
+    date,
+  ]).filter((part) => !(date && /^\d{4}$/.test(part) && date.includes(part)));
+};
+const context = (item: Recognition) =>
+  unique([item.event, item.organization, item.platform]).filter(
+    (part) =>
+      !includes(item.title, part) &&
+      !metadata(item).some((meta) => includes(meta, part)),
+  );
 ---
 
 <div class="awards">
-  {items.map((item, i) => (
-    <article class="award">
-      <span class="award-number" aria-hidden="true">
-        {String(i + 1).padStart(2, "0")}
-      </span>
-      <div>
-        {item.label && <span class="eyebrow">{item.label}</span>}
-        <h3>{item.title}</h3>
-        {item.description && <p>{item.description}</p>}
-        {item.link && (
-          <a
-            class="text-link"
-            href={item.link}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {item.link_label || "View details"} ↗
-          </a>
-        )}
-      </div>
-    </article>
-  ))}
+  {items.map((item, i) => {
+    const project = projects.find((project) => project.name === item.project);
+    return (
+      <article class="award">
+        <span class="award-number" aria-hidden="true">
+          {String(i + 1).padStart(2, "0")}
+        </span>
+        <div class="recognition-copy">
+          {metadata(item).length > 0 && (
+            <span class="eyebrow">{metadata(item).join(" · ")}</span>
+          )}
+          <h3>{item.title}</h3>
+          {context(item).length > 0 && (
+            <p class="recognition-context">{context(item).join(" · ")}</p>
+          )}
+          {item.result && !includes(item.title, item.result) && (
+            <p class="recognition-result">{item.result}</p>
+          )}
+          {item.description && (
+            <p class="recognition-description">{item.description}</p>
+          )}
+          {item.project && (
+            <p class="recognition-project">
+              <span>Project</span>{" "}
+              {project ? (
+                <a
+                  class="project-open"
+                  href={`#project-${project.slug}`}
+                  data-project={project.slug}
+                  aria-haspopup="dialog"
+                >
+                  {item.project}{" "}
+                  <span class="project-arrow" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+              ) : (
+                item.project
+              )}
+            </p>
+          )}
+          {item.link && (
+            <a
+              class="text-link"
+              href={item.link}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {item.link_label || "View details"} ↗
+            </a>
+          )}
+        </div>
+      </article>
+    );
+  })}
 </div>
+<style>
+  .recognition-copy {
+    min-width: 0;
+  }
+  .award .eyebrow {
+    display: block;
+    line-height: 1.7;
+  }
+  .award .recognition-context {
+    margin: -3px 0 14px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .award .recognition-result {
+    margin: 0 0 12px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -0.025em;
+  }
+  .award .recognition-description {
+    margin: 0;
+  }
+  .award .recognition-project {
+    margin-top: 18px;
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .recognition-project span {
+    color: var(--muted);
+    margin-right: 8px;
+  }
+  .recognition-project a {
+    text-decoration: underline;
+    text-decoration-color: var(--border);
+    text-underline-offset: 4px;
+  }
+  .recognition-project a:hover,
+  .recognition-project a:focus-visible {
+    text-decoration-color: currentColor;
+  }
+  .recognition-project .project-arrow {
+    margin: 0 0 0 3px;
+  }
+  .recognition-copy .text-link {
+    margin-top: 18px;
+    font-size: 11px;
+  }
+</style>

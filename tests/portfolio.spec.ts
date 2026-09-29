@@ -252,8 +252,12 @@ test("restored archive ordering, certificate previews and recognition sections",
   page,
 }) => {
   await page.goto("./");
-  await expect(page.locator('[data-filter]:not([data-filter="All"])')).toHaveText(
-    portfolio.portfolio_sections.archive.categories.map((category) => category.label),
+  await expect(
+    page.locator('[data-filter]:not([data-filter="All"])'),
+  ).toHaveText(
+    portfolio.portfolio_sections.archive.categories.map(
+      (category) => category.label,
+    ),
   );
   await expect(page.locator("#recognition .award")).toHaveCount(3);
   await expect(page.locator("#recognition .awards")).not.toContainText("Chess");
@@ -285,4 +289,79 @@ test("restored archive ordering, certificate previews and recognition sections",
   ).toBeTruthy();
   const result = await new AxeBuilder({ page }).analyze();
   expect(result.violations).toEqual([]);
+});
+
+test("recognition cards display every supplied detail directly from recognition data", async ({
+  page,
+}) => {
+  await page.goto("./");
+  const fields = [
+    "event",
+    "result",
+    "organization",
+    "project",
+    "year",
+    "type",
+    "platform",
+    "date",
+  ] as const;
+  for (const group of ["career", "personal"] as const) {
+    const cards = page.locator(
+      group === "career" ? "#recognition .award" : "#personal .award",
+    );
+    for (const [index, item] of portfolio.recognition[group].entries()) {
+      const values = item as Record<string, unknown>;
+      const expected = fields
+        .filter(
+          (key) =>
+            values[key] !== undefined &&
+            values[key] !== null &&
+            values[key] !== "",
+        )
+        .map((key) => String(values[key]));
+      await expect(cards.nth(index).locator("dl,table")).toHaveCount(0);
+      for (const value of expected) {
+        const text = /^\d{4}-\d{2}$/.test(value)
+          ? new Date(value + "-01T00:00:00Z").toLocaleDateString("en-US", {
+              month: "short",
+              year: "numeric",
+              timeZone: "UTC",
+            })
+          : value;
+        await expect(cards.nth(index)).toContainText(text);
+      }
+    }
+  }
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await page.locator("#recognition").scrollIntoViewIfNeeded();
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBeTruthy();
+    await page
+      .locator("#recognition .awards")
+      .screenshot({ path: `test-results/recognition-${width}.png` });
+  }
+});
+
+test("recognition project links open the matching panel and restore focus", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("./");
+  const links = page.locator("#recognition .recognition-project .project-open");
+  expect(await links.count()).toBeGreaterThan(0);
+  for (let i = 0; i < (await links.count()); i++) {
+    const link = links.nth(i);
+    const name = (await link.innerText()).replace("↗", "").trim();
+    await link.focus();
+    await page.keyboard.press("Enter");
+    await expect(page.locator(".project-dialog")).toBeVisible();
+    await expect(page.locator("#dialog-title")).toHaveText(name);
+    await page.keyboard.press("Escape");
+    await expect(page.locator(".project-dialog")).not.toBeVisible();
+    await expect(link).toBeFocused();
+  }
 });
