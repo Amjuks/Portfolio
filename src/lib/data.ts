@@ -61,40 +61,6 @@ export const archiveOrder = Object.fromEntries(
     c.project_order.map((name) => projects.find((p) => p.name === name)!.slug),
   ]),
 );
-export function recognitionItems(group: "career" | "personal") {
-  return data.portfolio_sections.recognition[group].map((ref) => {
-    if (ref.source === "achievement") {
-      const a = data.achievements.find((a) => a.title === ref.name);
-      if (a)
-        return {
-          title: a.title,
-          label: String(a.year || a.event),
-          description: a.description,
-          link: "",
-        };
-    }
-    if (ref.source === "publication") {
-      const p = data.research_and_publications.find(
-        (p) => p.title === ref.name,
-      );
-      if (p)
-        return {
-          title: p.title,
-          label: p.type + " · " + p.date.slice(0, 4),
-          description: p.description,
-          link: p.link,
-        };
-    }
-    if (ref.source === "interest" && data.personal_interests.includes(ref.name))
-      return {
-        title: ref.name,
-        label: "Personal interest",
-        description: "",
-        link: "",
-      };
-    throw Error("Unknown recognition reference: " + ref.name);
-  });
-}
 export const date = (value: string | null) =>
   value
     ? new Date(`${value}-01`).toLocaleDateString("en-US", {

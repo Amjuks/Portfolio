@@ -252,6 +252,9 @@ test("restored archive ordering, certificate previews and recognition sections",
   page,
 }) => {
   await page.goto("./");
+  await expect(page.locator('[data-filter]:not([data-filter="All"])')).toHaveText(
+    portfolio.portfolio_sections.archive.categories.map((category) => category.label),
+  );
   await expect(page.locator("#recognition .award")).toHaveCount(3);
   await expect(page.locator("#recognition .awards")).not.toContainText("Chess");
   await expect(page.locator("#personal .award")).toHaveCount(3);

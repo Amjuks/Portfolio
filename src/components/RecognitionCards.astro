@@ -1,0 +1,38 @@
+---
+interface Recognition {
+  title: string;
+  label?: string;
+  description?: string;
+  link?: string;
+  link_label?: string;
+}
+interface Props {
+  items: Recognition[];
+}
+const { items } = Astro.props;
+---
+
+<div class="awards">
+  {items.map((item, i) => (
+    <article class="award">
+      <span class="award-number" aria-hidden="true">
+        {String(i + 1).padStart(2, "0")}
+      </span>
+      <div>
+        {item.label && <span class="eyebrow">{item.label}</span>}
+        <h3>{item.title}</h3>
+        {item.description && <p>{item.description}</p>}
+        {item.link && (
+          <a
+            class="text-link"
+            href={item.link}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {item.link_label || "View details"} ↗
+          </a>
+        )}
+      </div>
+    </article>
+  ))}
+</div>

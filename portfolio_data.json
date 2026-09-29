@@ -1066,32 +1066,6 @@
     "Basic image classifier",
     "Social media automation bots"
   ],
-  "achievements": [
-    {
-      "title": "Winner, College-wide Researchathon",
-      "event": "Researchathon",
-      "result": "Winner",
-      "project": "Skin Lesion Classification",
-      "year": 2025,
-      "description": "Won a college-wide research competition with a skin-lesion classification project."
-    },
-    {
-      "title": "1st Place, Maze-Solving Robotics Competition",
-      "event": "Maze-Solving Robotics Competition",
-      "result": "1st Place",
-      "organization": "BMS College of Engineering",
-      "year": 2024,
-      "project": "Maze Runner",
-      "description": "Built a robot capable of autonomously navigating a maze as part of a 2-day competition."
-    },
-    {
-      "title": "Chess.com Puzzle Rank",
-      "event": "Chess.com",
-      "result": "Top 10%",
-      "year": null,
-      "description": "Chess puzzle performance ranked within the top 10%."
-    }
-  ],
   "research_and_publications": [
     {
       "title": "Particle Life: Simulating the Emergence of Order from Chaos",
@@ -1244,10 +1218,10 @@
         "Transformer Language Model From Scratch",
         "Decentralized Multimodal Biometric Identity System",
         "AI Smart Surveillance Robot",
-        "Global Compass - Interactive 3D News Exploration Platform",
+        "BumpYourServer",
         "Skin Lesion Classification",
-        "Particle Life Simulation",
-        "BumpYourServer"
+        "Global Compass - Interactive 3D News Exploration Platform",
+        "Particle Life Simulation"
       ]
     },
     "archive": {
@@ -1354,36 +1328,6 @@
           ]
         }
       ]
-    },
-    "recognition": {
-      "career": [
-        {
-          "source": "achievement",
-          "name": "Winner, College-wide Researchathon"
-        },
-        {
-          "source": "achievement",
-          "name": "1st Place, Maze-Solving Robotics Competition"
-        },
-        {
-          "source": "publication",
-          "name": "Particle Life: Simulating the Emergence of Order from Chaos"
-        }
-      ],
-      "personal": [
-        {
-          "source": "achievement",
-          "name": "Chess.com Puzzle Rank"
-        },
-        {
-          "source": "interest",
-          "name": "Paragliding"
-        },
-        {
-          "source": "interest",
-          "name": "Photography"
-        }
-      ]
     }
   },
   "open_fields_to_fill": {
@@ -1477,5 +1421,68 @@
     "featured_project_strategy": "Use the seven featured projects as the primary portfolio showcase and keep basic/generic projects in the archive.",
     "avoid_inventing": "Do not invent leadership roles, metrics, certifications, links, or achievements. Empty fields are intentional placeholders.",
     "personal_brand": "The portfolio should communicate that the user builds complete intelligent systems, not only isolated ML models."
+  },
+  "recognition": {
+    "career": [
+      {
+        "title": "Winner, College-wide Researchathon",
+        "event": "Researchathon",
+        "result": "Winner",
+        "project": "Skin Lesion Classification",
+        "year": 2025,
+        "description": "Won a college-wide research competition with a skin-lesion classification project.",
+        "label": "2025",
+        "link": "",
+        "link_label": ""
+      },
+      {
+        "title": "1st Place, Maze-Solving Robotics Competition",
+        "event": "Maze-Solving Robotics Competition",
+        "result": "1st Place",
+        "organization": "BMS College of Engineering",
+        "year": 2024,
+        "project": "Maze Runner",
+        "description": "Built a robot capable of autonomously navigating a maze as part of a 2-day competition.",
+        "label": "2024",
+        "link": "",
+        "link_label": ""
+      },
+      {
+        "title": "Particle Life: Simulating the Emergence of Order from Chaos",
+        "type": "Technical Article",
+        "platform": "Medium",
+        "date": "2025-02",
+        "link": "https://medium.com/@aman.jukaku/particle-life-simulating-the-emergence-of-order-from-chaos-e006dbcc574a",
+        "description": "Technical article discussing particle interactions, emergent structures, simulation mechanics, and computational exploration.",
+        "label": "Technical Article · 2025",
+        "link_label": "Read article"
+      }
+    ],
+    "personal": [
+      {
+        "title": "Chess.com Puzzle Rank",
+        "event": "Chess.com",
+        "result": "Top 10%",
+        "year": null,
+        "description": "Chess puzzle performance ranked within the top 10%.",
+        "label": "Chess.com",
+        "link": "",
+        "link_label": ""
+      },
+      {
+        "title": "Photography",
+        "label": "Personal interest",
+        "description": "Photography of landscapes, scenery, cars, architecture, travel, and everyday moments, with an interest in editing and composition.",
+        "link": "",
+        "link_label": ""
+      },
+      {
+        "title": "Paragliding",
+        "label": "Certified paraglider",
+        "description": "Completed training with multiple solo flights and enjoyed the experience of flying.",
+        "link": "",
+        "link_label": ""
+      }
+    ]
   }
 }

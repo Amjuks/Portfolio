@@ -51,13 +51,36 @@ Profile photos use `portfolio_assets.profile_photo`: set `available: true`, `pat
 
 ## Recognition
 
-`portfolio_sections.recognition.career` and `.personal` contain ordered references:
+All recognition content is defined directly in the top-level `recognition` object in `portfolio_data.json`. Its `career` and `personal` arrays control the two sections and their card order. Neither section looks up achievements, publications, or interests.
 
 ```json
-{"source":"achievement","name":"Exact achievement title"}
+{
+  "recognition": {
+    "career": [
+      {
+        "title": "Recognition title",
+        "label": "2025 · Competition",
+        "description": "Describe the achievement.",
+        "link": "",
+        "link_label": ""
+      }
+    ],
+    "personal": [
+      {
+        "title": "Personal highlight",
+        "label": "Personal interest",
+        "description": "",
+        "link": "",
+        "link_label": ""
+      }
+    ]
+  }
+}
 ```
 
-Sources: `achievement` matches an achievements title, `publication` matches a research_and_publications title, and `interest` matches personal_interests. Interests are labelled as interests rather than awards.
+Only `title` is required. Blank labels, descriptions, and links are hidden. When a link is supplied without `link_label`, its text defaults to “View details”. Both groups support the same fields. Existing event, year, result, organization, and project metadata is retained directly on the relevant recognition entries; use label/description to choose how it appears.
+
+The separate research/writing section still uses `research_and_publications`, and the About interest list still uses `personal_interests`. Changing those does not change recognition cards.
 
 ## Preview and publish
 
