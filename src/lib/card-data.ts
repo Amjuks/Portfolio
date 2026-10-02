@@ -10,4 +10,4 @@ export const cardContacts = [
   { text: displayUrl(card.github), href: card.github },
   { text: displayUrl(card.portfolio), href: card.portfolio },
 ];
-export const contactLayout = { left: 72, top: 374, height: 36, width: 680 };
+export const contactLayout = { left: 82, top: 341, height: 39, width: 665 };

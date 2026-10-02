@@ -94,6 +94,8 @@ The dedicated page is **/Portfolio/card/** (the /card route under the GitHub Pag
 
 Edit only `networking_card` in `portfolio_data.json` to change its name, title, tagline, email, LinkedIn, GitHub, portfolio link, and `qr_destination`. Links use complete HTTPS URLs; displayed addresses automatically omit the protocol and trailing slash.
 
+The visible card contains only name, role, contact links, and QR code. The tagline is retained only for page/search/share metadata, not displayed on the card.
+
 The page preview and downloadable **2100 × 1200 PNG** come from the same renderer and embedded Geist fonts. The PNG contains only the card and includes 300 DPI metadata. Both assets are generated locally during `npm run build`; no external screenshot service or browser is needed. The actual QR encodes `qr_destination`, which can differ from the shareable card URL.
 
 Download PNG saves the image. Share Card shares the canonical /card/ page URL through the device share sheet when supported, or copies it otherwise. Copy Link copies that same URL. If clipboard access is blocked, the page provides a selectable link.

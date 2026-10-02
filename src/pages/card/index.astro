@@ -3,6 +3,7 @@ import "@fontsource/geist/latin-400.css";
 import "@fontsource/geist/latin-500.css";
 import "@fontsource/geist/latin-600.css";
 import { createHash } from "node:crypto";
+import { cardSvg } from "../../lib/card-render";
 import {
   card,
   cardContacts,
@@ -13,7 +14,7 @@ import {
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const canonical = new URL(`${base}/card/`, Astro.site);
 const version = createHash("sha256")
-  .update(JSON.stringify(card))
+  .update(await cardSvg())
   .digest("hex")
   .slice(0, 10);
 const png = `${base}/card/card.png?v=${version}`;
@@ -27,7 +28,7 @@ const filename =
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0c0d13" />
+    <meta name="theme-color" content="#f3f4f7" />
     <title>{card.name} — Networking Card</title>
     <meta name="description" content={card.tagline} />
     <link rel="canonical" href={canonical} />
@@ -54,7 +55,7 @@ const filename =
           src={svg}
           width={CARD_WIDTH}
           height={CARD_HEIGHT}
-          alt={`${card.name}. ${card.title}. ${card.tagline} QR code links to ${card.qr_destination}`}
+          alt={`${card.name}. ${card.title}. QR code links to ${card.qr_destination}`}
           fetchpriority="high"
         />
         <nav class="card-contacts" aria-label="Card contact links">
@@ -133,6 +134,7 @@ const filename =
     box-sizing: border-box;
   }
   :global(body) {
+    color-scheme: light;
     margin: 0;
     background: #f3f4f7;
     color: #171820;
@@ -182,10 +184,10 @@ const filename =
     border-radius: 3px;
   }
   .card-contacts a:hover {
-    background: #ffffff08;
+    background: #17182008;
   }
   .card-contacts a:focus-visible {
-    outline: 2px solid #b5afe9;
+    outline: 2px solid #665987;
     outline-offset: 1px;
   }
   .sr-only {
@@ -263,27 +265,6 @@ const filename =
   .no-script {
     text-align: center;
     font-size: 12px;
-  }
-  @media (prefers-color-scheme: dark) {
-    :global(body) {
-      background: #08090d;
-      color: #f2f2f6;
-    }
-    h1,
-    .status {
-      color: #a2a5b1;
-    }
-    .action {
-      border-color: #343642;
-    }
-    .primary {
-      background: #e7e7ee;
-      color: #14151d;
-    }
-    input {
-      background: #171820;
-      color: #f2f2f6;
-    }
   }
   @media (max-width: 600px) {
     main {
