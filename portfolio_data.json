@@ -756,7 +756,7 @@
       "year": 2025,
       "status": "production",
       "category": "Backend / Production Systems / Automation",
-      "one_line_purpose": "Operate a production Discord bot for server promotion, moderation, configuration, and cross-server communication.",
+      "one_line_purpose": "Built and operate a production Discord bot serving communities representing approximately 100,000 members.",
       "description": "Built and operate a production Discord bot serving communities representing approximately 100,000 members.",
       "personally_built": [
         "Discord bot architecture",
